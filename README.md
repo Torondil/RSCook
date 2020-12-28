@@ -1,1 +1,1 @@
-# Ideas
+# webpack-boilerplate
