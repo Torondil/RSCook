@@ -1,0 +1,20 @@
+body {
+  background: radial-gradient(#e5e5e5, #ffff, #e5e5e5);
+}
+
+.card {
+  width: 20rem;
+}
+
+.card:hover {
+  box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
+}
+
+.cook-time {
+  margin-right: 10.5px;
+  display: inline-block;
+  vertical-align: bottom;
+  color: #6A6664;
+  font-size: 12px;
+  white-space: normal;
+}
