@@ -7,7 +7,7 @@ const Card = (): JSX.Element => {
   return (
     <div className="card text-center">
       <div className="overflow">
-        <img src="https://www.simplyrecipes.com/wp-content/uploads/2020/01/Lasagna-For-Two-LEAD-6-600x400.jpg" alt="Lasagna" />
+        <img src="https://www.simplyrecipes.com/wp-content/uploads/2018/11/Steamed-Salmon-2-300x214.jpg" alt="Lasagna" />
       </div>
       <div className="card-body text-dark">
         <h2 className="card-title">Loaf Pan Lasagna</h2>

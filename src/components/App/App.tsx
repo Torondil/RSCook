@@ -3,31 +3,35 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NaviBar from '@/components/Navbar';
 import Filter from '@/components/Filter';
-import Cards from '@/components/Card/Cards';
+import Cards from '@/components/Card';
 import About from '@/components/About';
-import Main from '@/components/Main/';
+import Main from '@/components/Main';
 import Profile from '@/components/Profile';
 import { Button } from 'react-bootstrap';
 
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 const App = (): JSX.Element =>  {
   return (
 <div>
-  <NaviBar />
   <Router>
+  <NaviBar />
     <Switch>
-      <Route exact path='/#main' component={ Main } />
-      <Route exact path='/#about' component={ About } />
-      <Route exact path='/#profile' component={ Profile } />
+      <Route exact path='/'>
+        <Main />
+      </Route>
+      <Route exact path='/about'>
+        <About />
+      </Route>
+      <Route exact path='/profile'>
+        <Profile />
+      </Route>
     </Switch>
   </Router>
-  <Main />
   <Filter />
   <Cards />
   <Button variant="primary">Add recipe</Button>
