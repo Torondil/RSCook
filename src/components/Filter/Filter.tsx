@@ -13,7 +13,7 @@ const Filter = (): JSX.Element => {
 
   useEffect(() => {
     if (result.status === 'loaded') {
-      // console.log(result.data);
+      console.log(result.data);
     }
   }, [result]);
 

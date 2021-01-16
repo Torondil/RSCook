@@ -19,7 +19,7 @@ const App = (): JSX.Element =>  {
   return (
 <div>
   <Router>
-  <NaviBar />
+    <NaviBar />
     <Switch>
       <Route exact path='/'>
         <Main />
