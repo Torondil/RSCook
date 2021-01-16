@@ -12,9 +12,6 @@ const BASE_RANDOMPATH = 'https://api.spoonacular.com/recipes/random';
 const NUMBER = '100';
 const API_KEY = '3c7502ce108f4a94b059adc1b3a86117';
 
-const Slider = (): JSX.Element => {
-    const { searchQuery } = this.state;
-    fetch(`${BASE_RANDOMPATH}?number=${NUMBER}&apiKey=${API_KEY}`)
 
   return (
     <Swiper
