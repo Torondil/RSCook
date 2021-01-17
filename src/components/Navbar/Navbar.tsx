@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import './Navbar.scss';
-import Icon from '@/assets/images/004-hat.svg';
+import Icon from '@/assets/svg/004-hat.svg';
 
 const NaviBar = (): JSX.Element => {
   return (

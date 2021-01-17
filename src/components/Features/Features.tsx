@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Features.scss';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import {Link} from "react-router-dom";
 
 const Features = (): JSX.Element => (
   <div className="bg-secondary text-white py-4">
@@ -36,7 +37,9 @@ const Features = (): JSX.Element => (
       </Row>
     </Container>
     <div className="d-flex justify-content-center my-3">
-      <Button variant="primary">Search recipes</Button>
+      <Link to="/search">
+        <Button variant="primary">Search recipes</Button>
+      </Link>
     </div>
   </div>
 )

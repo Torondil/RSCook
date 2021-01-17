@@ -8,7 +8,7 @@ import Audience from '@/components/Audience';
 const Main = (): JSX.Element => (
   <div className="bg-light">
       <div>
-        <img src={MainPage} className={styles['main_img']} alt="12321"/>
+        <img src={MainPage} className={styles['main_img']} alt="mainImg"/>
       </div>
       <Features/>
       <Slider />
