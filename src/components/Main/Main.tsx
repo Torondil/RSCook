@@ -1,12 +1,19 @@
 import React from 'react';
-// import mainPage from '';
+import MainPage from '@/assets/images/Group17.png';
 import Slider from '@/components/Slider';
-import './Main.scss';
+import styles from './Main.scss';
+import Features from '@/components/Features';
+import Audience from '@/components/Audience';
 
 const Main = (): JSX.Element => (
-    <div>
+  <div className="bg-light">
+      <div>
+        <img src={MainPage} className={styles['main_img']} alt="12321"/>
+      </div>
+      <Features/>
       <Slider />
-    </div>
+      <Audience />
+  </div>
   )
 
 export default Main;
