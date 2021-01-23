@@ -12,22 +12,14 @@ const NaviBar = (): JSX.Element => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link>
-              <Link to="/">Main page</Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link to="/about">About App</Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link to="/search">Let's search</Link>
-            </Nav.Link>
+            <Link className="nav-link" to="/">Main page</Link>
+            <Link className="nav-link" to="/about">About App</Link>
+            <Link className="nav-link" to="/search">Let's search</Link>
           </Nav>
           <Nav>
-          <Nav.Link>
-              <Link to="/profile">Your kitchen
-                <Icon />
-              </Link>
-            </Nav.Link>
+            <Link className="nav-link" to="/profile">Your kitchen
+              <Icon />
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -3,7 +3,6 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NaviBar from '@/components/Navbar';
 import Filter from '@/components/Filter';
-// import Cards from '@/components/Card';
 import About from '@/components/About';
 import Main from '@/components/Main';
 import Profile from '@/components/Profile';
@@ -34,8 +33,8 @@ const App = (): JSX.Element =>  {
             <Filter />
           </Route>
         </Switch>
+        <Footer />
       </Router>
-      <Footer />
     </div>
   );
 }
