@@ -7,8 +7,7 @@
   box-sizing: border-box;
   height: 40px;
   margin: 0 auto;
-  padding: 0 20px;
-  // background-color: $main-color--darker;
+  padding: 0 1.5rem;
 }
 
 .footer__school {
@@ -16,12 +15,7 @@
   align-items: center;
   width: 95px;
   height: 25px;
-  // color: $main-color;
   text-decoration: none;
-
-  &:hover {
-    // color: $main-color--lightest;
-  }
 }
 
 .footer__school-icon {
@@ -31,18 +25,15 @@
   border: 1px solid green;
   border-radius: 2px;
   background-color: red;
-
-  .footer__school:hover & {
-    background-color: yellow;
-  }
 }
 
 .footer__link {
   margin-left: 20px;
-  // color: $main-color;
   text-decoration: none;
+}
 
-  &:hover {
-    // color: $main-color--lightest;
-  }
+.footer__menu {
+  margin-left: 20px;
+  color: $color-link;
+  text-decoration: underline;
 }

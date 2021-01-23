@@ -1,18 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Keyboard, Autoplay } from 'swiper';
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
+import styles from './Slider.scss';
+import { Service } from '@/types/Service';
 SwiperCore.use([Navigation, Keyboard, Autoplay]);
 
-import { IFilter } from '@/types/Filter';
-import { Service } from '@/types/Service';
+export interface Recipe {
+  id: number;
+  title: string;
+  image: string;
+  summary: string;
+  sourceUrl: string;
+}
+
+export interface RootObject {
+  recipes: Recipe[];
+}
 
 const BASE_RANDOMPATH = 'https://api.spoonacular.com/recipes/random';
-const NUMBER = '100';
+const NUMBER = '20';
 const API_KEY = '3c7502ce108f4a94b059adc1b3a86117';
 
-const Slider = (): JSX.Element => {
+export const Slider = (): JSX.Element => {
+  const [data, setData] = useState<Service<RootObject>>({
+    status: 'loading'
+  });
+
+  useEffect(() => {
+    fetch(`${BASE_RANDOMPATH}?number=${NUMBER}&apiKey=${API_KEY}`)
+      .then(response => response.json())
+      .then(response => {
+        setData({ status: 'loaded', data: response });
+      })
+      .catch(error => setData(error));
+  }, []);
+  console.log(data);
   return (
     <div className="my-5 bg-light">
       <Swiper
@@ -24,7 +48,7 @@ const Slider = (): JSX.Element => {
         speed={500}
         loopFillGroupWithBlank
         autoplay={{
-          delay: 2500,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         keyboard={{
@@ -49,53 +73,26 @@ const Slider = (): JSX.Element => {
           },
         }}
       >
-        <SwiperSlide>
+      {data.status === "loaded" &&
+       data.data.recipes.map(item => (
+        <SwiperSlide key={item.id}>
           <div>
             <img
               className="d-block w-100"
-              src="https://www.simplyrecipes.com/wp-content/uploads/2020/01/Lasagna-For-Two-LEAD-6-600x400.jpg"
-              alt="Lasagna"
+              src={item.image}
+              alt="Recipe img"
             />
-            <h3>Recipe фыва</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut molestiae, iste delectus temporibus minus quia dolorum minima quidem earum alias?</p>
+            {/* <h4 className="mt-3 text-center overflow-hidden">
+              <a href={item.sourceUrl} target="blank" className={styles['recipe__title']} dangerouslySetInnerHTML={{ __html: item.title }}></a>
+            </h4> */}
+            <a href={item.sourceUrl} target="blank" className={styles['recipe__title']} dangerouslySetInnerHTML={{ __html: item.title }}></a>
+
+            <span dangerouslySetInnerHTML={{ __html: item.summary }} className={styles['recipe__summary']}/>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div>
-            <img
-              className="d-block w-100"
-              src="https://www.simplyrecipes.com/wp-content/uploads/2020/01/Lasagna-For-Two-LEAD-6-600x400.jpg"
-              alt="Lasagna"
-            />
-            <h3>Recipe asdas</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut molestiae, iste delectus temporibus minus quia dolorum minima quidem earum alias?</p>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div>
-            <img
-              className="d-block w-100"
-              src="https://www.simplyrecipes.com/wp-content/uploads/2020/01/Lasagna-For-Two-LEAD-6-600x400.jpg"
-              alt="Lasagna"
-            />
-            <h3>Recipe Title</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut molestiae, iste delectus temporibus minus quia dolorum minima quidem earum alias?</p>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div>
-            <img
-              className="d-block w-100"
-              src="https://www.simplyrecipes.com/wp-content/uploads/2020/01/Lasagna-For-Two-LEAD-6-600x400.jpg"
-              alt="Lasagna"
-            />
-            <h3>Recipe Title</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut molestiae, iste delectus temporibus minus quia dolorum minima quidem earum alias?</p>
-          </div>
-        </SwiperSlide>
+       ))}
       </Swiper>
     </div>
   );
 }
-
 export default Slider;

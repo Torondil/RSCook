@@ -1,9 +1,20 @@
 import React from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
+
 import rssLogo from '@/assets/images/rsschooljs.png';
 import styles from './Footer.scss';
+import {Link} from "react-router-dom";
+
 
 const Footer = (): JSX.Element => (
-  <footer className="bg-light my-3">
+  <footer className="bg-light py-3">
+    <Nav className="mr-4 mb-2 justify-content-end">
+      <Link className={styles['footer__menu']} to="/">Main page</Link>
+      <Link className={styles['footer__menu']} to="/search">Let's search</Link>
+      <Link className={styles['footer__menu']} to="/bucket">Bucket</Link>
+      <Link className={styles['footer__menu']} to="/devteam">Development team</Link>
+      <Link className={styles['footer__menu']} to="/contacts">Contact our team</Link>
+    </Nav>
     <div className={styles['footer__wrapper']}>
       <a className={styles['footer__school']} href="https://rs.school/js/">
         <img src={rssLogo} alt="rsschool"/>
