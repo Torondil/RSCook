@@ -18,8 +18,8 @@ const Footer = (): JSX.Element => (
     <div className={styles['footer__wrapper']}>
       <a className={styles['footer__school']} href="https://rs.school/js/">
         <img src={rssLogo} alt="rsschool"/>
-        <span>2021</span>
       </a>
+      <span>2021</span>
       <div className="footer__dev">
         <a className={styles['footer__link']} href="https://github.com/Torondil">Torondil</a>
         <a className={styles['footer__link']} href="https://github.com/KingstonTwelve">KingstonTwelve</a>
