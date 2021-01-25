@@ -7,6 +7,7 @@ import About from '@/components/About';
 import Main from '@/components/Main';
 import Profile from '@/components/Profile';
 import Footer from '@/components/Footer';
+import Developers from '../Developers';
 
 import {
   BrowserRouter as Router,
@@ -31,6 +32,9 @@ const App = (): JSX.Element =>  {
           </Route>
           <Route exact path='/search'>
             <Filter />
+          </Route>
+          <Route exact path='/devteam'>
+            <Developers />
           </Route>
         </Switch>
         <Footer />
