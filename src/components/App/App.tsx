@@ -6,6 +6,7 @@ import Filter from '@/components/Filter';
 import Cards from '@/components/Card';
 import About from '@/components/About';
 import Main from '@/components/Main';
+import Recipes from '@/components/Recipes';
 import Profile from '@/components/Profile';
 import { Button } from 'react-bootstrap';
 
@@ -35,6 +36,7 @@ const App = (): JSX.Element =>  {
   <Filter />
   <Cards />
   <Button variant="primary">Add recipe</Button>
+  <Recipes />
 </div>
 );
 }
