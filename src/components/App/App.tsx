@@ -5,6 +5,7 @@ import NaviBar from '@/components/Navbar';
 import Filter from '@/components/Filter';
 import About from '@/components/About';
 import Main from '@/components/Main';
+import Recipes from '@/components/Recipes';
 import Profile from '@/components/Profile';
 import Footer from '@/components/Footer';
 import Developers from '../Developers';
