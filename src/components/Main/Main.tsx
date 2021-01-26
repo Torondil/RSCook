@@ -4,6 +4,7 @@ import Slider from '@/components/Slider';
 import styles from './Main.scss';
 import Features from '@/components/Features';
 import Audience from '@/components/Audience';
+import Recipes from '@/components/Recipes/Recipes';
 
 const Main = (): JSX.Element => (
   <div className="bg-light">
@@ -13,6 +14,7 @@ const Main = (): JSX.Element => (
     <Features />
     {/* <Slider /> */}
     <Audience />
+    <Recipes />
   </div>
 );
 
