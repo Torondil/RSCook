@@ -1,45 +1,98 @@
-import React from 'react';
-// import img from '../imgdirrectory' подключить красиво картинки
-import { Carousel } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation, Keyboard, Autoplay } from 'swiper';
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import styles from './Slider.scss';
+import { Service } from '@/types/Service';
+SwiperCore.use([Navigation, Keyboard, Autoplay]);
 
-const Slider = (): JSX.Element => {
-  return (
-     <Carousel>
-       <Carousel.Item style={{'height': '400px'}}>
-        <img
-          className="d-block w-100"
-          src="https://www.simplyrecipes.com/wp-content/uploads/2020/02/Roasted-Red-Pepper-Hummus-LEAD-2-600x400.jpg"
-          alt="Lasagna"
-        />
-        <Carousel.Caption>
-          <h3>Recipe Title</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut molestiae, iste delectus temporibus minus quia dolorum minima quidem earum alias?</p>
-        </Carousel.Caption>
-       </Carousel.Item>
-       <Carousel.Item style={{'height': '400px'}}>
-        <img
-          className="d-block w-100"
-          src="https://www.simplyrecipes.com/wp-content/uploads/2019/02/Chicken-Tortilla-Soup-LEAD-4-600x400.jpg"
-          alt="Lasagna"
-        />
-        <Carousel.Caption>
-          <h3>Recipe Title</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut molestiae, iste delectus temporibus minus quia dolorum minima quidem earum alias?</p>
-        </Carousel.Caption>
-       </Carousel.Item>
-       <Carousel.Item style={{'height': '400px'}}>
-        <img
-          className="d-block w-100"
-          src="https://www.simplyrecipes.com/wp-content/uploads/2020/01/Lasagna-For-Two-LEAD-6-600x400.jpg"
-          alt="Lasagna"
-        />
-        <Carousel.Caption>
-          <h3>Recipe Title</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut molestiae, iste delectus temporibus minus quia dolorum minima quidem earum alias?</p>
-        </Carousel.Caption>
-       </Carousel.Item>
-     </Carousel>
-  );
+export interface Recipe {
+  id: number;
+  title: string;
+  image: string;
+  summary: string;
+  sourceUrl: string;
 }
 
+export interface RootObject {
+  recipes: Recipe[];
+}
+
+const BASE_RANDOMPATH = 'https://api.spoonacular.com/recipes/random';
+const NUMBER = '20';
+const API_KEY = '3c7502ce108f4a94b059adc1b3a86117';
+
+export const Slider = (): JSX.Element => {
+  const [data, setData] = useState<Service<RootObject>>({
+    status: 'loading'
+  });
+
+  useEffect(() => {
+    fetch(`${BASE_RANDOMPATH}?number=${NUMBER}&apiKey=${API_KEY}`)
+      .then(response => response.json())
+      .then(response => {
+        setData({ status: 'loaded', data: response });
+      })
+      .catch(error => setData(error));
+  }, []);
+  console.log(data);
+  return (
+    <div className="my-5 bg-light">
+      <Swiper
+        slidesPerView={1}
+        navigation
+        spaceBetween={20}
+        slidesPerGroup={1}
+        loop
+        speed={500}
+        loopFillGroupWithBlank
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        keyboard={{
+          enabled: true,
+        }}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+            slidesPerGroup: 1,
+
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            slidesPerGroup: 1,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+            slidesPerGroup: 1,
+          },
+        }}
+      >
+      {data.status === "loaded" &&
+       data.data.recipes.map(item => (
+        <SwiperSlide key={item.id}>
+          <div>
+            <img
+              className="d-block w-100"
+              src={item.image}
+              alt="Recipe img"
+            />
+            {/* <h4 className="mt-3 text-center overflow-hidden">
+              <a href={item.sourceUrl} target="blank" className={styles['recipe__title']} dangerouslySetInnerHTML={{ __html: item.title }}></a>
+            </h4> */}
+            <a href={item.sourceUrl} target="blank" className={styles['recipe__title']} dangerouslySetInnerHTML={{ __html: item.title }}></a>
+
+            <span dangerouslySetInnerHTML={{ __html: item.summary }} className={styles['recipe__summary']}/>
+          </div>
+        </SwiperSlide>
+       ))}
+      </Swiper>
+    </div>
+  );
+}
 export default Slider;
