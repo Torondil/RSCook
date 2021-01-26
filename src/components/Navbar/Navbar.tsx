@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 import './Navbar.scss';
 import Icon from '@/assets/svg/004-hat.svg';
 
+import SwitcherTheme from '@/containers/colorTheme/SwitcherTheme';
+
 const NaviBar = (): JSX.Element => {
   return (
     <div className="bg-light">
@@ -21,6 +23,7 @@ const NaviBar = (): JSX.Element => {
               <Icon />
             </Link>
           </Nav>
+          <SwitcherTheme />
         </Navbar.Collapse>
       </Navbar>
     </div>
