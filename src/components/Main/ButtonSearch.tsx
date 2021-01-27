@@ -30,7 +30,7 @@ const ButtonSearch = () : JSX.Element => {
   return (
     <div className={classes.root}>
         <Button variant="contained" href="#search">
-          Search
+        Search inspiration
         </Button>
     </div>  
   );
