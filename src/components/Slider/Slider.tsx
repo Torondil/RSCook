@@ -4,7 +4,9 @@ import SwiperCore, { Navigation, Keyboard, Autoplay } from 'swiper';
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import styles from './Slider.scss';
+import { makeStyles } from '@material-ui/core/styles';
 import { Service } from '@/types/Service';
+import CircularProgress from '@material-ui/core/CircularProgress';
 SwiperCore.use([Navigation, Keyboard, Autoplay]);
 
 export interface Recipe {
@@ -19,6 +21,14 @@ export interface RootObject {
   recipes: Recipe[];
 }
 
+const LoadStyle = makeStyles({
+  loading: {
+    color: '#6c757d',
+    margin: '50px auto 0',
+    display: 'block',
+  },
+});
+
 const BASE_RANDOMPATH = 'https://api.spoonacular.com/recipes/random';
 const NUMBER = '20';
 const API_KEY = '3c7502ce108f4a94b059adc1b3a86117';
@@ -27,6 +37,7 @@ export const Slider = (): JSX.Element => {
   const [data, setData] = useState<Service<RootObject>>({
     status: 'loading'
   });
+  const classes = LoadStyle();
 
   useEffect(() => {
     fetch(`${BASE_RANDOMPATH}?number=${NUMBER}&apiKey=${API_KEY}`)
@@ -36,9 +47,14 @@ export const Slider = (): JSX.Element => {
       })
       .catch(error => setData(error));
   }, []);
-  console.log(data);
+
   return (
     <div className="my-5 bg-light">
+      {data.status === 'loading' && (
+        <div>
+          <CircularProgress className={classes.loading} />
+        </div>
+      )}
       <Swiper
         slidesPerView={1}
         navigation

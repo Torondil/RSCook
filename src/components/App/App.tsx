@@ -38,6 +38,7 @@ const App = (): JSX.Element =>  {
             <Developers />
           </Route>
         </Switch>
+        <Recipes />
         <Footer />
       </Router>
     </div>
