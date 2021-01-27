@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 const Features = (): JSX.Element => (
   <div className="bg-secondary text-white py-4">
-    <h2 className="text-center mb-4">Application features</h2>
+    <h2 className="text-center pb-4 pt-2">Application features</h2>
     <Container>
       <Row>
         <Col>
@@ -38,7 +38,7 @@ const Features = (): JSX.Element => (
     </Container>
     <div className="d-flex justify-content-center my-3">
       <Link to="/search">
-        <Button variant="primary">Search recipes</Button>
+        <Button className="theme-button" variant="primary">Search recipes</Button>
       </Link>
     </div>
   </div>

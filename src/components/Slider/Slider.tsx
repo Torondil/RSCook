@@ -22,6 +22,7 @@ export interface RootObject {
 const BASE_RANDOMPATH = 'https://api.spoonacular.com/recipes/random';
 const NUMBER = '20';
 const API_KEY = '3c7502ce108f4a94b059adc1b3a86117';
+// const API_KEY = '6f98d3f931d94627ba3e8bbe05155764';
 
 export const Slider = (): JSX.Element => {
   const [data, setData] = useState<Service<RootObject>>({
@@ -38,7 +39,7 @@ export const Slider = (): JSX.Element => {
   }, []);
   console.log(data);
   return (
-    <div className="my-5 bg-light">
+    <div className="py-5 bg-light theme-container">
       <Swiper
         slidesPerView={1}
         navigation
@@ -82,11 +83,7 @@ export const Slider = (): JSX.Element => {
               src={item.image}
               alt="Recipe img"
             />
-            {/* <h4 className="mt-3 text-center overflow-hidden">
-              <a href={item.sourceUrl} target="blank" className={styles['recipe__title']} dangerouslySetInnerHTML={{ __html: item.title }}></a>
-            </h4> */}
             <a href={item.sourceUrl} target="blank" className={styles['recipe__title']} dangerouslySetInnerHTML={{ __html: item.title }}></a>
-
             <span dangerouslySetInnerHTML={{ __html: item.summary }} className={styles['recipe__summary']}/>
           </div>
         </SwiperSlide>
