@@ -19,4 +19,6 @@ const useService = (stateQuery: string): Service<IFilter[]> => {
   return result;
 };
 
+
+
 export default useService;
