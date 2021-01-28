@@ -10,5 +10,6 @@ declare module 'styled-components' {
     buttonHover: string;
     fontDarkColor: string;
     mainImg: string;
+    // buttonToggle: string;
   }
 }

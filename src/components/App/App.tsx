@@ -8,6 +8,7 @@ import Main from '@/components/Main';
 import Profile from '@/components/Profile';
 import Footer from '@/components/Footer';
 import Developers from '../Developers';
+import { Button } from 'react-bootstrap';
 
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme, GlobalStyles } from '@/themes/themes';
@@ -20,7 +21,6 @@ import {
 
 const App = (): JSX.Element =>  {
   const [theme, setTheme] = useState('light');
-
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
   }
@@ -28,9 +28,9 @@ const App = (): JSX.Element =>  {
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles />
-        <button className='position-fixed' onClick={() => themeToggler()}>Change theme</button>
         <Router>
           <NaviBar />
+          <Button className="toggle-button w-100" onClick={() => themeToggler()} size="sm">Change theme</Button>
           <Switch>
             <Route exact path='/'>
               <Main />

@@ -32,12 +32,12 @@ export const GlobalStyles = createGlobalStyle`
     color: ${(props) => props.theme.mainImg};
   }
 
-  .theme-button {
+  .theme-button, .toggle-button {
     background-color: ${(props) => props.theme.backgroundColor};
     border-color: ${(props) => props.theme.backgroundColor};
   }
 
-  .theme-button:hover {
+  .theme-button:hover, .toggle-button:hover {
     background-color: ${(props) => props.theme.buttonHover};
     border-color: ${(props) => props.theme.buttonHover};
   }
