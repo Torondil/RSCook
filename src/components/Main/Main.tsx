@@ -4,6 +4,7 @@ import Slider from '@/components/Slider';
 import styles from './Main.scss';
 import Features from '@/components/Features';
 import Audience from '@/components/Audience';
+import Recipes from '@/components/Recipes';
 
 const Main = (): JSX.Element => {
  return (
@@ -13,7 +14,8 @@ const Main = (): JSX.Element => {
         <div className={styles['main__title']}>Your pocket cookbook</div>
       </div>
       <Features/>
-      {/* <Slider /> */}
+      <Slider />
+      <Recipes />
       <Audience />
   </div>
   )

@@ -1,15 +1,15 @@
 import React from 'react';
 import RecipeCategories from './RecipeCategories';
-import ButtonSearch from '../Main/ButtonSearch';
-import styles from './recipes.scss';
+import { Button } from 'react-bootstrap';
+
 
 const Recipes = () : JSX.Element => {
   return (
-    <div className={`${styles['recipes']}`} >
-      <h2>Recipes</h2>
+    <div className='py-4 d-flex align-items-center flex-column' >
+      <h2 className="theme-title">Recipes</h2>
       <RecipeCategories />
-      <ButtonSearch />
-    </div>  
+      <Button className="theme-button mt-5 mb-3" variant="primary">Search inspiration</Button>
+    </div>
   );
 };
 export default Recipes;

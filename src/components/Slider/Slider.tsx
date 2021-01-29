@@ -50,7 +50,7 @@ export const Slider = (): JSX.Element => {
   }, []);
 
   return (
-    <div className="my-5 bg-light theme-container">
+    <div className="mt-5 mb-2 bg-light theme-container">
       {data.status === 'loading' && (
         <div>
           <CircularProgress className={classes.loading} />
@@ -61,6 +61,7 @@ export const Slider = (): JSX.Element => {
         navigation
         spaceBetween={20}
         slidesPerGroup={1}
+        observeParents
         loop
         speed={500}
         loopFillGroupWithBlank

@@ -7,15 +7,17 @@ export const lightTheme = {
   buttonHover: '#0069d9 !important',
   fontDarkColor: '#ffc107 !important',
   mainImg: '#434852 !important',
+  cardBgr: '#f8f9fa !important',
 };
 
 export const darkTheme = {
   body: '#24292e !important',
   fontColor: '#b1bac4 !important',
-  backgroundColor: '#45638e  !important',
+  backgroundColor: '#45638e !important',
   buttonHover: '#314d6c !important',
   fontDarkColor: '#EC8B83 !important',
   mainImg: '#D0675F !important',
+  cardBgr: '#6c757d !important',
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -24,7 +26,7 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${(props) => props.theme.body};
   }
 
-  a, span, .bio-info, .developers-title {
+  a, span, .bio-info, .developers-title, .rdGroup, .theme-title, .theme-card {
     color: ${(props) => props.theme.fontColor};
   }
 
@@ -44,6 +46,10 @@ export const GlobalStyles = createGlobalStyle`
 
   .text-warning {
     color: ${(props) => props.theme.fontDarkColor};
+  }
+
+  .theme-card {
+    background-color: ${(props) => props.theme.cardBgr};
   }
 
 `
