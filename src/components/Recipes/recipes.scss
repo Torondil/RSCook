@@ -1,20 +1,17 @@
-.recipes {
-    margin: 100px 0;
-} 
 .recipeCategories {
     display: flex;
     align-content: center;
-    margin: 50px 0 35px 0
+    margin: 30px 0 35px 0
 }
 .recipeCategories div {
     margin: 0 auto;
 }
 .recipeCategories label {
     margin: 0;
-    border-left: 1px solid #3078B4;
+    border-left: 1px solid #007bff;
 }
 .recipeCategories label:first-child {
-    border-left: none
+    border-left: none;
 }
 .recipeCategories label span {
     color: #434852;
@@ -24,7 +21,7 @@
 }
 .recipeCategories .rdGroup {
     flex-direction: row;
-    border: 1px solid #3078B4;
+    border: 1px solid #007bff;
     border-radius: 4px;
   }
 .recipeCategories svg, .recipeCategories label span:first-child {
@@ -57,20 +54,14 @@
 .recipeCards div.cardWrapButton {
     padding-top: 0;
     padding-bottom: 0;
+    justify-content: center;
 }
-.recipeCards a.cardButton {
-    background-color: #3078B4;
-    border: 1px solid #3078B4;
-    color: #fff;
-    text-transform: capitalize;
-    margin: 0 auto;
-    font-size: 1rem;
+.recipeCards .cardButton {
     position: relative;
     top: 20px;
 }
 .recipeCards a.cardButton:hover {
-    border: 1px solid #3078B4;
-    color:#3078B4;
+    color: #007bff;
     background-color: #fff;
 }
 .recipeCards a.cardButton span {
