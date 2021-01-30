@@ -11,9 +11,6 @@
         "./*"
       ]
     },
-    "includes" :[
-      "./src/types/*.d.ts"
-    ],
     "outDir": "./build/",
     "rootDir": "./",
     "module": "CommonJS",
