@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 declare module '*.scss' {
   const classes: { [key: string]: string };
-  export = classes;
+  export default classes;
 }
 
 declare module '*.svg' {
   const content: any;
-  export = content;
+  export default content;
 }
 declare module "*.png" {
   const content: any;
@@ -14,5 +14,5 @@ declare module "*.png" {
 }
 declare module "*.jpg" {
   const content: any;
-  export = content;
+  export default content;
 }
