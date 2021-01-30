@@ -59,9 +59,11 @@ export const Slider = (): JSX.Element => {
       <Swiper
         slidesPerView={1}
         navigation
+          //  observer={true}
+          //  autoHeight={true}
         spaceBetween={20}
         slidesPerGroup={1}
-        observeParents
+        observeParents={true}
         loop
         speed={500}
         loopFillGroupWithBlank
