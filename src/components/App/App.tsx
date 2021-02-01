@@ -5,9 +5,9 @@ import NaviBar from '@/components/Navbar';
 import Filter from '@/components/Filter';
 import About from '@/components/About';
 import Main from '@/components/Main';
-import Recipes from '@/components/Recipes';
 import Profile from '@/components/Profile';
 import Footer from '@/components/Footer';
+import CardRecipe from '@/components/CardRecipe';
 import Developers from '../Developers';
 
 import {
@@ -37,8 +37,10 @@ const App = (): JSX.Element =>  {
           <Route exact path='/devteam'>
             <Developers />
           </Route>
+          <Route path='/recipe/'>
+            <CardRecipe />
+          </Route>
         </Switch>
-        <Recipes />
         <Footer />
       </Router>
     </div>

@@ -70,15 +70,6 @@ const RecipeCategories = (): JSX.Element => {
 
             <FormControlLabel 
               classes={{label: classes.label}} 
-              value="snack" 
-              control={
-                <Radio classes={{ checked: classes.checked }}/>
-              } 
-              label="Snack" 
-            />
-
-            <FormControlLabel 
-              classes={{label: classes.label}} 
               value="drink" 
               control={
                 <Radio classes={{ checked: classes.checked }}/>
@@ -89,7 +80,7 @@ const RecipeCategories = (): JSX.Element => {
           </RadioGroup>
       </FormControl>
     </div>
-    <RecipeCard typeOfRecipe={value} />;
+    <RecipeCard typeOfRecipe={value} />
     </div>
   );
 };

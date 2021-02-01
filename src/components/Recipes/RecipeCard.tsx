@@ -50,6 +50,7 @@ const CardStyle = makeStyles({
     maxWidth: 260,
     borderRadius: '15px',
     overflow: 'visible',
+    position: 'relative',
   },
   loading: {
     color: '#6c757d',
@@ -72,6 +73,12 @@ const CardStyle = makeStyles({
   },
   likeRecipe: {
     backgroundPosition: '0% 0%',
+  },
+  gridMain : {
+    gridGap: '24px 48px',
+  },
+  gridItem:  {
+    padding: '24px 0',
   },
 });
 
@@ -108,10 +115,10 @@ export const RecipeCard = (props: { typeOfRecipe: string }): JSX.Element => {
       )}
       {service.status === 'error' && <div>Error</div>}
 
-      <Grid container spacing={6}>
+      <Grid container justify='center' spacing={0} className={classes.gridMain}>
         {service.status === 'loaded' &&
           service.data.results.map(card => (
-            <Grid item key={card.id}>
+            <Grid item key={card.id} className={classes.gridItem}>
               <Card className={classes.root}>
                 <CardContentHead image={card.image} idRecipe={card.id} />
                 <CardContent className={styles['cardContent']}>
@@ -153,7 +160,7 @@ export const RecipeCard = (props: { typeOfRecipe: string }): JSX.Element => {
                 </CardContent>
 
                 <CardActions className={styles['cardWrapButton']}>
-                  <Button className={styles['cardButton']} variant="contained" href="#search">
+                  <Button className={styles['cardButton']} target="_blank" variant="contained" href={`/recipe/${card.id}`}>
                     Learn More
                   </Button>
                 </CardActions>
