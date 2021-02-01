@@ -7,7 +7,7 @@ export const lightTheme = {
   buttonHover: '#0069d9 !important',
   fontDarkColor: '#ffc107 !important',
   mainImg: '#434852 !important',
-  cardBgr: '#f8f9fa !important'
+  cardBgr: '#f8f9fa !important',
 };
 
 export const darkTheme = {
@@ -17,17 +17,17 @@ export const darkTheme = {
   buttonHover: '#314d6c !important',
   fontDarkColor: '#EC8B83 !important',
   mainImg: '#D0675F !important',
-  cardBgr: '#6c757d !important'
+  cardBgr: '#6c757d !important',
 };
 
 export const GlobalStyles = createGlobalStyle`
 
   body, nav, .swiper-container, footer, .theme-container {
-    background-color: ${(props) => props.theme.body};
+    background-color: ${props => props.theme.body};
   }
 
   a, span, .bio-info, .developers-title, .rdGroup, .theme-title, .theme-card {
-    color: ${(props) => props.theme.fontColor};
+    color: ${props => props.theme.fontColor};
   }
 
   a:hover {
@@ -35,25 +35,25 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .theme-main {
-    color: ${(props) => props.theme.mainImg};
+    color: ${props => props.theme.mainImg};
   }
 
   .theme-button, .toggle-button {
-    background-color: ${(props) => props.theme.backgroundColor};
-    border-color: ${(props) => props.theme.backgroundColor};
+    background-color: ${props => props.theme.backgroundColor};
+    border-color: ${props => props.theme.backgroundColor};
   }
 
   .theme-button:hover, .toggle-button:hover {
-    background-color: ${(props) => props.theme.buttonHover};
-    border-color: ${(props) => props.theme.buttonHover};
+    background-color: ${props => props.theme.buttonHover};
+    border-color: ${props => props.theme.buttonHover};
   }
 
   .text-warning {
-    color: ${(props) => props.theme.fontDarkColor};
+    color: ${props => props.theme.fontDarkColor};
   }
 
   .theme-card, .MuiPaper-root {
-    background-color: ${(props) => props.theme.cardBgr};
+    background-color: ${props => props.theme.cardBgr};
   }
 
-`
+`;
