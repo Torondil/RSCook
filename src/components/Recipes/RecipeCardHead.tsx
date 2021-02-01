@@ -6,6 +6,7 @@ import {
   DialogContentText,
   Slide,
   Button,
+  CardMedia,
   ButtonBase
 } from "@material-ui/core";
 
@@ -41,6 +42,7 @@ const CardStyle = makeStyles({
     position: 'absolute',
     top: '15px',
     left: '15px',
+    cursor: 'pointer',
   },
   likeRecipe: {
     backgroundPosition: '0% 0%',
@@ -128,16 +130,13 @@ const CardContentHead = (props: { idRecipe: number; image: string, recipes: Arra
 
   return (
     <div>
-      <ButtonBase
+      <CardMedia
         className={classes.media}
-        style={{
-          backgroundImage: `url(${props.image})`,
-        }}
-        onClick={() => handleClick(props.idRecipe)}
-      //onClick={handleDialog}
-      >
-        <span data-key={props.idRecipe} className={`${classes.bookmark} ${like}`} />
-      </ButtonBase>
+        image={props.image}
+        title="Image of recipe"
+      />
+      {/* <span onClick={handleDialog} data-key={props.idRecipe} className={`${classes.bookmark} ${like}`} /> */}
+      <span onClick={() => handleClick(props.idRecipe)} data-key={props.idRecipe} className={`${classes.bookmark} ${like}`} />
 
       <Dialog className={classes.dialog}
         open={open}

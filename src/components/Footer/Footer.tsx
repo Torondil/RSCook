@@ -7,8 +7,8 @@ import {Link} from "react-router-dom";
 
 
 const Footer = (): JSX.Element => (
-  <footer className="bg-light py-3 theme-container">
-    <Nav className="pr-4 pb-2 justify-content-end">
+  <footer className="bg-light py-3">
+    <Nav className="mr-4 mb-2 justify-content-end">
       <Link className={styles['footer__menu']} to="/">Main page</Link>
       <Link className={styles['footer__menu']} to="/search">Let's search</Link>
       <Link className={styles['footer__menu']} to="/bucket">Bucket</Link>
