@@ -15,8 +15,8 @@ const Main = (): JSX.Element => {
       </div>
       <Features/>
       <Slider />
-      <Recipes />
       <Audience />
+      <Recipes />
   </div>
   )
 }
