@@ -7,7 +7,7 @@ export const lightTheme = {
   buttonHover: '#0069d9 !important',
   fontDarkColor: '#ffc107 !important',
   mainImg: '#434852 !important',
-  cardBgr: '#f8f9fa !important',
+  cardBgr: '#f8f9fa !important'
 };
 
 export const darkTheme = {
@@ -17,7 +17,7 @@ export const darkTheme = {
   buttonHover: '#314d6c !important',
   fontDarkColor: '#EC8B83 !important',
   mainImg: '#D0675F !important',
-  cardBgr: '#6c757d !important',
+  cardBgr: '#6c757d !important'
 };
 
 export const GlobalStyles = createGlobalStyle`
