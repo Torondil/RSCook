@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const lightTheme = {
   body: '#f8f9fa !important',
-  fontColor: '#24292e !important',
+  fontColor: '#434852 !important',
   backgroundColor: '#007bff !important',
   buttonHover: '#0069d9 !important',
   fontDarkColor: '#ffc107 !important',
@@ -30,6 +30,10 @@ export const GlobalStyles = createGlobalStyle`
     color: ${(props) => props.theme.fontColor};
   }
 
+  a:hover {
+    color: ${darkTheme.fontDarkColor};
+  }
+
   .theme-main {
     color: ${(props) => props.theme.mainImg};
   }
@@ -48,7 +52,7 @@ export const GlobalStyles = createGlobalStyle`
     color: ${(props) => props.theme.fontDarkColor};
   }
 
-  .theme-card {
+  .theme-card, .MuiPaper-root {
     background-color: ${(props) => props.theme.cardBgr};
   }
 

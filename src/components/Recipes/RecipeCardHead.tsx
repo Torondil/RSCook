@@ -62,7 +62,7 @@ const CardStyle = makeStyles({
     color: '#3078B4',
     textTransform: 'capitalize',
     padding: '3px 8px',
-  },  
+  },
   cancelBtn : {
     border: '1px solid #3078B4 !important',
     color: '#3078B4',
@@ -80,7 +80,7 @@ const CardContentHead = (props: { idRecipe: number; image: string }): JSX.Elemen
       : [];
     return arrayIds.includes(props.idRecipe.toString()) ? classes.likeRecipe : '';
   });
- 
+
   const handleClose = () => {
     setOpenDialog(false);
   };
@@ -90,7 +90,7 @@ const CardContentHead = (props: { idRecipe: number; image: string }): JSX.Elemen
       clickLikeBookmark(props.idRecipe);
     } else {
       setOpenDialog(true);
-    }  
+    }
   };
 
   const clickLikeBookmark = (id: number): void => {
@@ -120,7 +120,7 @@ const CardContentHead = (props: { idRecipe: number; image: string }): JSX.Elemen
     >
       <span data-key={props.idRecipe} className={`${classes.bookmark} ${like}`} />
     </ButtonBase>
-    
+
     <Dialog className={classes.dialog}
         open={open}
         TransitionComponent={Transition}

@@ -14,7 +14,7 @@ const Main = (): JSX.Element => {
         <div className={styles['main__title']}>Your pocket cookbook</div>
       </div>
       <Features/>
-      <Slider />
+      {/* <Slider /> */}
       <Audience />
       <Recipes />
   </div>
