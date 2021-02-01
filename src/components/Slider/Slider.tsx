@@ -4,7 +4,9 @@ import SwiperCore, { Navigation, Keyboard, Autoplay } from 'swiper';
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import styles from './Slider.scss';
+import { makeStyles } from '@material-ui/core/styles';
 import { Service } from '@/types/Service';
+import CircularProgress from '@material-ui/core/CircularProgress';
 SwiperCore.use([Navigation, Keyboard, Autoplay]);
 
 export interface Recipe {
@@ -19,31 +21,45 @@ export interface RootObject {
   recipes: Recipe[];
 }
 
+const LoadStyle = makeStyles({
+  loading: {
+    color: '#6c757d',
+    margin: '50px auto 0',
+    display: 'block',
+  },
+});
+
 const BASE_RANDOMPATH = 'https://api.spoonacular.com/recipes/random';
 const NUMBER = '20';
-const API_KEY = '6f98d3f931d94627ba3e8bbe05155764';
-//6f98d3f931d94627ba3e8bbe05155764
-//3c7502ce108f4a94b059adc1b3a86117
+const API_KEY = '3c7502ce108f4a94b059adc1b3a86117';
+// const API_KEY = '6f98d3f931d94627ba3e8bbe05155764';
 
 export const Slider = (): JSX.Element => {
   const [data, setData] = useState<Service<RootObject>>({
     status: 'loading'
   });
+  const classes = LoadStyle();
 
-  /* useEffect(() => {
+  useEffect(() => {
     fetch(`${BASE_RANDOMPATH}?number=${NUMBER}&apiKey=${API_KEY}`)
       .then(response => response.json())
       .then(response => {
         setData({ status: 'loaded', data: response });
       })
       .catch(error => setData(error));
-  }, []); */
-  console.log(data);
+  }, []);
+
   return (
-    <div className="my-5 bg-light">
+    <div className="my-5 bg-light theme-container">
+      {data.status === 'loading' && (
+        <div>
+          <CircularProgress className={classes.loading} />
+        </div>
+      )}
       <Swiper
         slidesPerView={1}
         navigation
+        autoHeight={true}
         spaceBetween={20}
         slidesPerGroup={1}
         loop
@@ -85,7 +101,6 @@ export const Slider = (): JSX.Element => {
                   alt="Recipe img"
                 />
                 <a href={item.sourceUrl} target="blank" className={styles['recipe__title']} dangerouslySetInnerHTML={{ __html: item.title }}></a>
-
                 <span dangerouslySetInnerHTML={{ __html: item.summary }} className={styles['recipe__summary']} />
               </div>
             </SwiperSlide>
