@@ -17,6 +17,8 @@ import { TransitionProps } from '@material-ui/core/transitions';
 import StarIcon from '@material-ui/icons/Star';
 import Bookmark from '@/assets/images/bookmark.png';
 
+import { connect } from 'react-redux';
+import { addRecipe, removeRecipe } from '@/action/actionCreator';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
@@ -44,26 +46,26 @@ const CardStyle = makeStyles({
     backgroundPosition: '0% 0%',
   },
   dialog: {
-    '& > * > *' : {
-       border: '1px solid #3078B4',
+    '& > * > *': {
+      border: '1px solid #3078B4',
     },
-    '& > * > * > #modal-dialog-title' : {
+    '& > * > * > #modal-dialog-title': {
       padding: '10px 24px',
       marginBottom: '10px',
       backgroundColor: '#3078B4',
-   },
-   '& > * > * > * h2' : {
-    textAlign: 'left',
-    color: '#fff',
-   },
+    },
+    '& > * > * > * h2': {
+      textAlign: 'left',
+      color: '#fff',
+    },
   },
-  addBtn : {
+  addBtn: {
     border: '1px solid #3078B4 !important',
     color: '#3078B4',
     textTransform: 'capitalize',
     padding: '3px 8px',
-  },  
-  cancelBtn : {
+  },
+  cancelBtn: {
     border: '1px solid #3078B4 !important',
     color: '#3078B4',
     textTransform: 'capitalize',
@@ -71,16 +73,31 @@ const CardStyle = makeStyles({
   },
 });
 
-const CardContentHead = (props: { idRecipe: number; image: string }): JSX.Element => {
+type Recipe = {
+  id: number;
+};
+
+const CardContentHead = (props: { idRecipe: number; image: string, recipes: Array<Recipe>, addRecipe(id: number): void, removeRecipe(id: number): void }): JSX.Element => {
   const classes = CardStyle();
-    const [open, setOpenDialog] = useState(false);
+  const [open, setOpenDialog] = useState(false);
   const [like, setClassLike] = useState(() => {
     const arrayIds: Array<string> = localStorage.getItem('likeRecipe')
       ? JSON.parse(localStorage.getItem('likeRecipe') || '{}')
       : [];
     return arrayIds.includes(props.idRecipe.toString()) ? classes.likeRecipe : '';
   });
- 
+
+  const checkRecipesList = (recipes: Array<Recipe>, id: number): boolean => recipes.some((item: Recipe) => item.id === id);
+
+  const handleClick = (id: number) => {
+    const { recipes, addRecipe, removeRecipe } = props;
+    if (checkRecipesList(recipes, id)) {
+      removeRecipe(id);
+    } else {
+      addRecipe(id);
+    }
+  };
+
   const handleClose = () => {
     setOpenDialog(false);
   };
@@ -90,7 +107,7 @@ const CardContentHead = (props: { idRecipe: number; image: string }): JSX.Elemen
       clickLikeBookmark(props.idRecipe);
     } else {
       setOpenDialog(true);
-    }  
+    }
   };
 
   const clickLikeBookmark = (id: number): void => {
@@ -111,17 +128,18 @@ const CardContentHead = (props: { idRecipe: number; image: string }): JSX.Elemen
 
   return (
     <div>
-    <ButtonBase
-      className={classes.media}
-      style={{
-        backgroundImage: `url(${props.image})`,
-      }}
-      onClick={handleDialog}
-    >
-      <span data-key={props.idRecipe} className={`${classes.bookmark} ${like}`} />
-    </ButtonBase>
-    
-    <Dialog className={classes.dialog}
+      <ButtonBase
+        className={classes.media}
+        style={{
+          backgroundImage: `url(${props.image})`,
+        }}
+        onClick={() => handleClick(props.idRecipe)}
+      //onClick={handleDialog}
+      >
+        <span data-key={props.idRecipe} className={`${classes.bookmark} ${like}`} />
+      </ButtonBase>
+
+      <Dialog className={classes.dialog}
         open={open}
         TransitionComponent={Transition}
         keepMounted
@@ -136,7 +154,7 @@ const CardContentHead = (props: { idRecipe: number; image: string }): JSX.Elemen
         </DialogContent>
         <DialogActions>
           <Button className={classes.addBtn} onClick={() => clickLikeBookmark(props.idRecipe)} color="primary">
-              <StarIcon style={{ color: '#3078B4', fontSize: 20 }} />Add
+            <StarIcon style={{ color: '#3078B4', fontSize: 20 }} />Add
           </Button>
           <Button className={classes.cancelBtn} onClick={handleClose} color="primary">
             Cancel
@@ -146,4 +164,8 @@ const CardContentHead = (props: { idRecipe: number; image: string }): JSX.Elemen
     </div>
   );
 };
-export default CardContentHead;
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+export default connect(({ recipes }) => ({
+  recipes,
+}), { addRecipe, removeRecipe })(CardContentHead);

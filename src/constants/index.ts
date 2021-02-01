@@ -8,4 +8,8 @@ const stateNumber = 25;
 
 const CHANGE_THEME = 'CHANGE_THEME';
 
-export { FilterUrl, FreeApiKey1, stateNumber, CHANGE_THEME };
+const ADD_RECIPE = 'ADD_RECIPE';
+
+const REMOVE_RECIPE = 'REMOVE_RECIPE';
+
+export { FilterUrl, FreeApiKey1, stateNumber, CHANGE_THEME, ADD_RECIPE, REMOVE_RECIPE };
