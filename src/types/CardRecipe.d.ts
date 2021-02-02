@@ -31,8 +31,7 @@ export interface ExtendedIngredient {
   measures: Measures;
 }
 
-export interface WinePairing {
-}
+export interface WinePairing {}
 
 export interface Ingredient {
   id: number;

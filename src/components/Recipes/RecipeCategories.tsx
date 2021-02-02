@@ -12,7 +12,7 @@ import styles from './recipes.scss';
 const CheckedStyle = makeStyles({
   checked: {
     '&, & + $label': {
-      background: '#3078B4',
+      background: '#007bff',
       color: 'white',
     },
   },
@@ -23,64 +23,59 @@ const RecipeCategories = (): JSX.Element => {
   const [value, setValue] = useState('main+course');
   const classes = CheckedStyle();
 
-  const handleChange = (event : React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value); 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue((event.target as HTMLInputElement).value);
   };
 
   return (
     <div>
-    <div className={styles['recipeCategories']}>
-      <FormControl component="div">
-          <RadioGroup className={styles['rdGroup']} aria-label="categories" name="category1" value={value} onChange={handleChange}>
-            <FormControlLabel 
-              classes={{label: classes.label}} 
-              value="main+course" 
-              control={
-                <Radio classes={{ checked: classes.checked }}/>
-              } 
-              label="Main course" 
+      <div className={styles['recipeCategories']}>
+        <FormControl component="div">
+          <RadioGroup
+            className={styles['rdGroup']}
+            aria-label="categories"
+            name="category1"
+            value={value}
+            onChange={handleChange}
+          >
+            <FormControlLabel
+              classes={{ label: classes.label }}
+              value="main+course"
+              control={<Radio classes={{ checked: classes.checked }} />}
+              label="Main course"
             />
 
-            <FormControlLabel 
-              classes={{label: classes.label}} 
-              value="dessert" 
-              control={
-                <Radio classes={{ checked: classes.checked }}/>
-              } 
-              label="Dessert" 
+            <FormControlLabel
+              classes={{ label: classes.label }}
+              value="dessert"
+              control={<Radio classes={{ checked: classes.checked }} />}
+              label="Dessert"
             />
 
-            <FormControlLabel 
-              classes={{label: classes.label}} 
-              value="breakfast" 
-              control={
-                <Radio classes={{ checked: classes.checked }}/>
-              } 
-              label="Breakfast" 
+            <FormControlLabel
+              classes={{ label: classes.label }}
+              value="breakfast"
+              control={<Radio classes={{ checked: classes.checked }} />}
+              label="Breakfast"
             />
 
-            <FormControlLabel 
-              classes={{label: classes.label}} 
-              value="salad" 
-              control={
-                <Radio classes={{ checked: classes.checked }}/>
-              } 
-              label="Salad" 
+            <FormControlLabel
+              classes={{ label: classes.label }}
+              value="salad"
+              control={<Radio classes={{ checked: classes.checked }} />}
+              label="Salad"
             />
 
-            <FormControlLabel 
-              classes={{label: classes.label}} 
-              value="drink" 
-              control={
-                <Radio classes={{ checked: classes.checked }}/>
-              } 
-              label="Drink" 
+            <FormControlLabel
+              classes={{ label: classes.label }}
+              value="drink"
+              control={<Radio classes={{ checked: classes.checked }} />}
+              label="Drink"
             />
-
           </RadioGroup>
-      </FormControl>
-    </div>
-    <RecipeCard typeOfRecipe={value} />
+        </FormControl>
+      </div>
+      <RecipeCard typeOfRecipe={value} />
     </div>
   );
 };

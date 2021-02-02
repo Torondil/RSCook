@@ -1,11 +1,11 @@
-import { 
+import {
   Grid,
   CardMedia,
   CardContent,
   Typography,
   CircularProgress,
   Tabs,
-  Tab
+  Tab,
 } from '@material-ui/core';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import React, { useEffect, useState } from 'react';
@@ -39,9 +39,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <div>{children}</div>
-      )}
+      {value === index && <div>{children}</div>}
     </div>
   );
 }
@@ -69,7 +67,7 @@ const timeConvert = (num: number): string => {
 
 const CardStyle = makeStyles((theme: Theme) =>
   createStyles({
-    gridMain : {
+    gridMain: {
       display: 'grid',
       gridTemplateColumns: '2fr 3fr',
       '& > * > * > div.MuiBox-root': {
@@ -79,7 +77,7 @@ const CardStyle = makeStyles((theme: Theme) =>
         gridTemplateColumns: '1fr',
       },
     },
-    cardImage : {
+    cardImage: {
       minHeight: '500px',
       [theme.breakpoints.down('sm')]: {
         minHeight: '350px',
@@ -101,7 +99,7 @@ const CardStyle = makeStyles((theme: Theme) =>
     likeRecipe: {
       backgroundPosition: '0% 0%',
     },
-    panelTabs : {
+    panelTabs: {
       marginTop: '40px',
       '& > * > span': {
         backgroundColor: '#f0f0f0',
@@ -110,14 +108,14 @@ const CardStyle = makeStyles((theme: Theme) =>
         marginTop: '20px',
       },
     },
- }),
+  })
 );
 
 const CardRecipe = (): JSX.Element => {
   const classes = CardStyle();
   const [value, setValue] = useState(0);
   const [info, setData] = useState<Service<IRootObject>>({
-    status: 'loading'
+    status: 'loading',
   });
   const id = (window.location.pathname).replace('/recipe/', '');
   
@@ -133,7 +131,7 @@ const CardRecipe = (): JSX.Element => {
       })
       .catch(error => setData(error));
   }, []);
-  
+
   const [like, setClassLike] = useState(() => {
     const arrayIds: Array<string> = localStorage.getItem('likeRecipe')
       ? JSON.parse(localStorage.getItem('likeRecipe') || '{}')
@@ -161,22 +159,22 @@ const CardRecipe = (): JSX.Element => {
   return (
     <div className={`${styles['wrapCardRecipe']} bg-light`}>
       <div className={styles['cardRecipe']}>
-
+        
         {info.status === 'loading' && (
           <div style={{ paddingTop: '50px', paddingBottom: '50px' }}>
             <CircularProgress className={classes.loading} />
           </div>
         )}
 
-        {info.status === "loaded" && ( 
-        <Grid container className={classes.gridMain} spacing={0}>
-          <Grid item >
-            <CardMedia
-              component="img"
-              className={classes.cardImage}
-              alt={`Image of recipe ${info.data.title}`}
-              image={info.data.image}
-              title={`Image of recipe ${info.data.title}`}
+        {info.status === 'loaded' && (
+          <Grid container className={classes.gridMain} spacing={0}>
+            <Grid item>
+              <CardMedia
+                component="img"
+                className={classes.cardImage}
+                alt={`Image of recipe ${info.data.title}`}
+                image={info.data.image}
+                title={`Image of recipe ${info.data.title}`}
               />
               <div className={styles['wrapCardClock']}>
                 <div>
@@ -186,7 +184,7 @@ const CardRecipe = (): JSX.Element => {
                   <span>Cooking Time</span>
                   <div>{timeConvert(info.data.readyInMinutes)}</div>
                 </div>
-                
+
                 <div>
                   <IconSaucepan alt="Saucepan" />
                 </div>
@@ -223,6 +221,7 @@ const CardRecipe = (): JSX.Element => {
               {info.data.dairyFree && ( 
                 <span>Dairy Free</span> 
               )}
+              
             </div>
             
             <Tabs className={classes.panelTabs} value={value} onChange={handleChange} aria-label="description recipe">
@@ -232,12 +231,12 @@ const CardRecipe = (): JSX.Element => {
             
             <TabPanel value={value} index={0}>
                 <div className={styles['cardTabContent']}>
-                <ul>
-                      {info.data.extendedIngredients.map((item, i) => (
-                        <li key={i}>{item.original}</li> )
-                      )}
-                    </ul>
-                 </div>
+                  <ul>
+                    {info.data.extendedIngredients.map((item, i) => (
+                      <li key={i}>{item.original}</li>
+                    ))}
+                  </ul>
+                </div>
             </TabPanel>
 
             <TabPanel value={value} index={1}>
@@ -255,4 +254,4 @@ const CardRecipe = (): JSX.Element => {
     </div>
   );
 };
-export default CardRecipe; 
+export default CardRecipe;
