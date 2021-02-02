@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import {
   Dialog,
   DialogActions,
@@ -7,13 +9,9 @@ import {
   Slide,
   Button,
   CardMedia,
-  ButtonBase,
 } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
-
-import React, { useState } from 'react';
-
 import { TransitionProps } from '@material-ui/core/transitions';
 import StarIcon from '@material-ui/icons/Star';
 import Bookmark from '@/assets/images/bookmark.png';

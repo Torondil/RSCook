@@ -12,7 +12,7 @@ import styles from './recipes.scss';
 const CheckedStyle = makeStyles({
   checked: {
     '&, & + $label': {
-      background: '#3078B4',
+      background: '#007bff',
       color: 'white',
     },
   },

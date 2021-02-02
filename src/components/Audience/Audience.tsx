@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const Audience = (): JSX.Element => (
   <div className="bg-secondary text-white py-4">
-    <h2 className="text-center mt-3">Target audience</h2>
+    <h2 className="text-center pb-4 pt-2">Target audience</h2>
     <Container>
       <Row>
         <img src={FirstLogo} className={styles['img-icon']} alt="FirstLogo" />
@@ -41,9 +41,9 @@ const Audience = (): JSX.Element => (
         </Col>
       </Row>
     </Container>
-    <div className="d-flex justify-content-center my-3">
+    <div className="d-flex justify-content-center py-3">
       <Link to="/search">
-        <Button variant="primary">Search inspiration</Button>
+        <Button className="theme-button" variant="primary">Search inspiration</Button>
       </Link>
     </div>
   </div>

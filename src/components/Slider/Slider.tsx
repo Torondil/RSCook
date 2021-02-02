@@ -32,6 +32,7 @@ const LoadStyle = makeStyles({
 const BASE_RANDOMPATH = 'https://api.spoonacular.com/recipes/random';
 const NUMBER = '20';
 const API_KEY = '3c7502ce108f4a94b059adc1b3a86117';
+// const API_KEY = '6f98d3f931d94627ba3e8bbe05155764';
 
 export const Slider = (): JSX.Element => {
   const [data, setData] = useState<Service<RootObject>>({
@@ -49,7 +50,7 @@ export const Slider = (): JSX.Element => {
   }, []);
 
   return (
-    <div className="my-5 bg-light">
+    <div className="my-5 bg-light theme-container">
       {data.status === 'loading' && (
         <div>
           <CircularProgress className={classes.loading} />
@@ -58,6 +59,7 @@ export const Slider = (): JSX.Element => {
       <Swiper
         slidesPerView={1}
         navigation
+        autoHeight={true}
         spaceBetween={20}
         slidesPerGroup={1}
         loop
