@@ -36,7 +36,7 @@ const API_KEY = '3c7502ce108f4a94b059adc1b3a86117';
 
 export const Slider = (): JSX.Element => {
   const [data, setData] = useState<Service<RootObject>>({
-    status: 'loading'
+    status: 'loading',
   });
   const classes = LoadStyle();
 
@@ -59,7 +59,7 @@ export const Slider = (): JSX.Element => {
       <Swiper
         slidesPerView={1}
         navigation
-           autoHeight={true}
+        autoHeight={true}
         spaceBetween={20}
         slidesPerGroup={1}
         loop
@@ -77,7 +77,6 @@ export const Slider = (): JSX.Element => {
             slidesPerView: 2,
             spaceBetween: 20,
             slidesPerGroup: 1,
-
           },
           768: {
             slidesPerView: 3,
@@ -91,22 +90,30 @@ export const Slider = (): JSX.Element => {
           },
         }}
       >
-      {data.status === "loaded" &&
-       data.data.recipes.map(item => (
-        <SwiperSlide key={item.id}>
-          <div>
-            <img
-              className="d-block w-100"
-              src={item.image}
-              alt="Recipe img"
-            />
-            <a href={item.sourceUrl} target="blank" className={styles['recipe__title']} dangerouslySetInnerHTML={{ __html: item.title }}></a>
-            <span dangerouslySetInnerHTML={{ __html: item.summary }} className={styles['recipe__summary']}/>
-          </div>
-        </SwiperSlide>
-       ))}
+        {data.status === 'loaded' &&
+          data.data.recipes.map(item => (
+            <SwiperSlide key={item.id}>
+              <div>
+                <img className="d-block w-100" src={item.image} alt="Recipe img" />
+                {/* <h4 className="mt-3 text-center overflow-hidden">
+              <a href={item.sourceUrl} target="blank" className={styles['recipe__title']} dangerouslySetInnerHTML={{ __html: item.title }}></a>
+            </h4> */}
+                <a
+                  href={item.sourceUrl}
+                  target="blank"
+                  className={styles['recipe__title']}
+                  dangerouslySetInnerHTML={{ __html: item.title }}
+                ></a>
+
+                <span
+                  dangerouslySetInnerHTML={{ __html: item.summary }}
+                  className={styles['recipe__summary']}
+                />
+              </div>
+            </SwiperSlide>
+          ))}
       </Swiper>
     </div>
   );
-}
+};
 export default Slider;

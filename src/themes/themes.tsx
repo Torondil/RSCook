@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const lightTheme = {
   body: '#f8f9fa !important',
-  fontColor: '#24292e !important',
+  fontColor: '#434852 !important',
   backgroundColor: '#007bff !important',
   buttonHover: '#0069d9 !important',
   fontDarkColor: '#ffc107 !important',
@@ -23,33 +23,37 @@ export const darkTheme = {
 export const GlobalStyles = createGlobalStyle`
 
   body, nav, .swiper-container, footer, .theme-container {
-    background-color: ${(props) => props.theme.body};
+    background-color: ${props => props.theme.body};
   }
 
   a, span, .bio-info, .developers-title, .rdGroup, .theme-title, .theme-card {
-    color: ${(props) => props.theme.fontColor};
+    color: ${props => props.theme.fontColor};
+  }
+
+  a:hover {
+    color: ${darkTheme.fontDarkColor};
   }
 
   .theme-main {
-    color: ${(props) => props.theme.mainImg};
+    color: ${props => props.theme.mainImg};
   }
 
   .theme-button, .toggle-button {
-    background-color: ${(props) => props.theme.backgroundColor};
-    border-color: ${(props) => props.theme.backgroundColor};
+    background-color: ${props => props.theme.backgroundColor};
+    border-color: ${props => props.theme.backgroundColor};
   }
 
   .theme-button:hover, .toggle-button:hover {
-    background-color: ${(props) => props.theme.buttonHover};
-    border-color: ${(props) => props.theme.buttonHover};
+    background-color: ${props => props.theme.buttonHover};
+    border-color: ${props => props.theme.buttonHover};
   }
 
   .text-warning {
-    color: ${(props) => props.theme.fontDarkColor};
+    color: ${props => props.theme.fontDarkColor};
   }
 
-  .theme-card {
-    background-color: ${(props) => props.theme.cardBgr};
+  .theme-card, .MuiPaper-root {
+    background-color: ${props => props.theme.cardBgr};
   }
 
-`
+`;

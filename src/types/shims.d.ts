@@ -8,11 +8,11 @@ declare module '*.svg' {
   const content: any;
   export default content;
 }
-declare module "*.png" {
+declare module '*.png' {
   const content: any;
   export = content;
 }
-declare module "*.jpg" {
-  const content: any;
+declare module '*.jpg' {
+  const content: string;
   export default content;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Features.scss';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Features = (): JSX.Element => (
   <div className="bg-secondary text-white py-4">
@@ -9,30 +9,48 @@ const Features = (): JSX.Element => (
     <Container>
       <Row>
         <Col>
-        <h3 className="text-warning">Feature title</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam. Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.</p>
+          <h3 className="text-warning">Feature title</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam.
+            Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.
+          </p>
         </Col>
         <Col>
-        <h3 className="text-warning">Feature title</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam. Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.</p>
+          <h3 className="text-warning">Feature title</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam.
+            Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.
+          </p>
         </Col>
         <Col>
-        <h3 className="text-warning">Feature title</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam. Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.</p>
+          <h3 className="text-warning">Feature title</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam.
+            Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.
+          </p>
         </Col>
       </Row>
       <Row>
         <Col>
-        <h3 className="text-warning">Feature title</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam. Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.</p>
+          <h3 className="text-warning">Feature title</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam.
+            Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.
+          </p>
         </Col>
         <Col>
-        <h3 className="text-warning">Feature title</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam. Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.</p>
+          <h3 className="text-warning">Feature title</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam.
+            Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.
+          </p>
         </Col>
         <Col>
-        <h3 className="text-warning">Feature title</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam. Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.</p>
+          <h3 className="text-warning">Feature title</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam.
+            Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.
+          </p>
         </Col>
       </Row>
     </Container>
@@ -42,6 +60,6 @@ const Features = (): JSX.Element => (
       </Link>
     </div>
   </div>
-)
+);
 
 export default Features;
