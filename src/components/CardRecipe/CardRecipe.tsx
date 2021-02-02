@@ -18,7 +18,7 @@ import VideocamIcon from '@material-ui/icons/Videocam';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import Bookmark from '@/assets/images/bookmark.png';
 import styles from './recipe.scss';
-
+import CardRecipeSteps from '@/components/CardRecipe/CardRecipeSteps';
 
 const API_KEY = '6f98d3f931d94627ba3e8bbe05155764'; //6f98d3f931d94627ba3e8bbe05155764';
 
@@ -120,7 +120,7 @@ const CardRecipe = (): JSX.Element => {
     status: 'loading'
   });
   const id = (window.location.pathname).replace('/recipe/', '');
- 
+  
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
@@ -155,11 +155,13 @@ const CardRecipe = (): JSX.Element => {
     }
     localStorage.setItem('likeRecipe', JSON.stringify(arrayIds));
   };
+  let temp: Array<string> = [];
+  
 
   return (
     <div className={`${styles['wrapCardRecipe']} bg-light`}>
       <div className={styles['cardRecipe']}>
-        
+
         {info.status === 'loading' && (
           <div style={{ paddingTop: '50px', paddingBottom: '50px' }}>
             <CircularProgress className={classes.loading} />
@@ -203,7 +205,7 @@ const CardRecipe = (): JSX.Element => {
             {info.data.vegan && ( 
               <span><Brightness1Icon style={{ fontSize: 15, color: '#14c4bb' }} /> vegan</span>
             )}
-            {info.data.vegan && ( 
+            {info.data.veryHealthy && ( 
               <span><Brightness1Icon style={{ fontSize: 15, color: '#3078B4', marginLeft: '15px' }} /> healthy</span>
             )}
             
@@ -222,7 +224,6 @@ const CardRecipe = (): JSX.Element => {
                 <span>Dairy Free</span> 
               )}
             </div>
-
             
             <Tabs className={classes.panelTabs} value={value} onChange={handleChange} aria-label="description recipe">
               <Tab label="Ingredients" {...a11yProps(0)} />
@@ -241,23 +242,15 @@ const CardRecipe = (): JSX.Element => {
 
             <TabPanel value={value} index={1}>
               <CardContent className={styles['cardTabContent']}>
-                  {info.data.analyzedInstructions.map(item => (
-                      item.steps.map((step, i) => (
-                                <div key={i}>
-                                  <span><CheckCircleIcon style={{ fontSize: 20, color: '#4a6a83' }} /> STEP {i+1} </span>
-                                  <p>{step.step}</p>
-                                </div>
-                              ))
-                      )
-                  )}
+                {info.data.analyzedInstructions.forEach(({steps}) => 
+                  steps.map(item => temp.push(item.step))
+                )}
+                <CardRecipeSteps arraySteps={temp} />
               </CardContent>
             </TabPanel>
           </Grid>
         </Grid>
         )}
-
-
-
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ import IconClock from '@/assets/svg/clock.svg';
 import { FilterUrl, FreeApiKey1 } from '@/constants';
 import { IRecipeResult } from '@/types/RecipeCards';
 import { Service } from '@/types/Service';
+import {Link} from "react-router-dom";
 
 import CardContentHead from './RecipeCardHead';
 import styles from './recipes.scss';
@@ -160,9 +161,9 @@ export const RecipeCard = (props: { typeOfRecipe: string }): JSX.Element => {
                 </CardContent>
 
                 <CardActions className={styles['cardWrapButton']}>
-                  <Button className={styles['cardButton']} target="_blank" variant="contained" href={`/recipe/${card.id}`}>
-                    Learn More
-                  </Button>
+                  <Link className={styles['cardButton']} to={`/recipe/${card.id}`}>
+                      Learn More
+                  </Link>
                 </CardActions>
               </Card>
             </Grid>

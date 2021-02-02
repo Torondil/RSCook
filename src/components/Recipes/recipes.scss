@@ -68,11 +68,14 @@
     font-size: 1rem;
     position: relative;
     top: 20px;
+    padding: 5px 16px 8px 16px;
+    border-radius: 4px;
 }
 .recipeCards a.cardButton:hover {
     border: 1px solid #3078B4;
     color:#3078B4;
     background-color: #fff;
+    text-decoration: none;
 }
 .recipeCards a.cardButton span {
     line-height: 27px;
