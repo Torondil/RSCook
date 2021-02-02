@@ -1,5 +1,5 @@
 import React from 'react';
-import MainPage from '@/assets/images/Group 17.png';
+import MainPage from '@/assets/images/mainimg.png';
 import Slider from '@/components/Slider';
 import styles from './Main.scss';
 import Features from '@/components/Features';

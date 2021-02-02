@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import {
   Dialog,
   DialogActions,
@@ -7,13 +9,9 @@ import {
   Slide,
   Button,
   CardMedia,
-  ButtonBase
-} from "@material-ui/core";
+} from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
-
-import React, { useState } from 'react';
-
 import { TransitionProps } from '@material-ui/core/transitions';
 import StarIcon from '@material-ui/icons/Star';
 import Bookmark from '@/assets/images/bookmark.png';
@@ -23,7 +21,7 @@ import { addRecipe, removeRecipe } from '@/action/actionCreator';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
-  ref: React.Ref<unknown>,
+  ref: React.Ref<unknown>
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -130,10 +128,11 @@ const CardContentHead = (props: { idRecipe: number; image: string, recipes: Arra
 
   return (
     <div>
-      <CardMedia
-        className={classes.media}
-        image={props.image}
-        title="Image of recipe"
+      <CardMedia className={classes.media} image={props.image} title="Image of recipe" />
+      <span
+        onClick={handleDialog}
+        data-key={props.idRecipe}
+        className={`${classes.bookmark} ${like}`}
       />
       {/* <span onClick={handleDialog} data-key={props.idRecipe} className={`${classes.bookmark} ${like}`} /> */}
       <span onClick={() => handleClick(props.idRecipe)} data-key={props.idRecipe} className={`${classes.bookmark} ${like}`} />
@@ -145,15 +144,20 @@ const CardContentHead = (props: { idRecipe: number; image: string, recipes: Arra
         onClose={handleClose}
         aria-labelledby="modal-dialog-title"
       >
-        <DialogTitle id="modal-dialog-title">{"Add a Favorite?"}</DialogTitle>
+        <DialogTitle id="modal-dialog-title">{'Add a Favorite?'}</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Add this recipe as a favorite. To access to favorites, visit the your Profile.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button className={classes.addBtn} onClick={() => clickLikeBookmark(props.idRecipe)} color="primary">
-            <StarIcon style={{ color: '#3078B4', fontSize: 20 }} />Add
+          <Button
+            className={classes.addBtn}
+            onClick={() => clickLikeBookmark(props.idRecipe)}
+            color="primary"
+          >
+            <StarIcon style={{ color: '#3078B4', fontSize: 20 }} />
+            Add
           </Button>
           <Button className={classes.cancelBtn} onClick={handleClose} color="primary">
             Cancel

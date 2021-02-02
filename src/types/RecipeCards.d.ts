@@ -22,4 +22,3 @@ export interface IRecipeIngredient {
   localizedName: string;
   image: string;
 }
-

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NaviBar from '@/components/Navbar';
@@ -9,41 +9,51 @@ import Profile from '@/components/Profile';
 import Footer from '@/components/Footer';
 import CardRecipe from '@/components/CardRecipe';
 import Developers from '../Developers';
+import { Button } from 'react-bootstrap';
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { ThemeProvider } from 'styled-components';
 
-const App = (): JSX.Element =>  {
+import { lightTheme, darkTheme, GlobalStyles } from '@/themes/themes';
+
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+const App = (): JSX.Element => {
+  const [theme, setTheme] = useState('light');
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light');
+  };
+
   return (
-    <div>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <GlobalStyles />
       <Router>
         <NaviBar />
+        <Button className="toggle-button w-100" onClick={() => themeToggler()} size="sm">
+          Change theme
+        </Button>
         <Switch>
-          <Route exact path='/'>
+          <Route exact path="/">
             <Main />
           </Route>
-          <Route exact path='/about'>
+          <Route exact path="/about">
             <About />
           </Route>
-          <Route exact path='/profile'>
+          <Route exact path="/profile">
             <Profile />
           </Route>
-          <Route exact path='/search'>
+          <Route exact path="/search">
             <Filter />
           </Route>
-          <Route exact path='/devteam'>
+          <Route exact path="/devteam">
             <Developers />
           </Route>
-          <Route path='/recipe/'>
+          <Route path="/recipe/">
             <CardRecipe />
           </Route>
         </Switch>
         <Footer />
       </Router>
-    </div>
+    </ThemeProvider>
   );
-}
+};
 export default App;
