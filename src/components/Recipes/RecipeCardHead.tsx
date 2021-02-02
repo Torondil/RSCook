@@ -16,6 +16,9 @@ import { TransitionProps } from '@material-ui/core/transitions';
 import StarIcon from '@material-ui/icons/Star';
 import Bookmark from '@/assets/images/bookmark.png';
 
+import { connect } from 'react-redux';
+import { addRecipe, removeRecipe } from '@/action/actionCreator';
+
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
   ref: React.Ref<unknown>
@@ -70,7 +73,11 @@ const CardStyle = makeStyles({
   },
 });
 
-const CardContentHead = (props: { idRecipe: number; image: string }): JSX.Element => {
+type Recipe = {
+  id: number;
+};
+
+const CardContentHead = (props: { idRecipe: number; image: string, recipes: Array<Recipe>, addRecipe(id: number): void, removeRecipe(id: number): void }): JSX.Element => {
   const classes = CardStyle();
   const [open, setOpenDialog] = useState(false);
   const [like, setClassLike] = useState(() => {
@@ -79,6 +86,17 @@ const CardContentHead = (props: { idRecipe: number; image: string }): JSX.Elemen
       : [];
     return arrayIds.includes(props.idRecipe.toString()) ? classes.likeRecipe : '';
   });
+
+  const checkRecipesList = (recipes: Array<Recipe>, id: number): boolean => recipes.some((item: Recipe) => item.id === id);
+
+  const handleClick = (id: number) => {
+    const { recipes, addRecipe, removeRecipe } = props;
+    if (checkRecipesList(recipes, id)) {
+      removeRecipe(id);
+    } else {
+      addRecipe(id);
+    }
+  };
 
   const handleClose = () => {
     setOpenDialog(false);
@@ -116,9 +134,10 @@ const CardContentHead = (props: { idRecipe: number; image: string }): JSX.Elemen
         data-key={props.idRecipe}
         className={`${classes.bookmark} ${like}`}
       />
+      {/* <span onClick={handleDialog} data-key={props.idRecipe} className={`${classes.bookmark} ${like}`} /> */}
+      <span onClick={() => handleClick(props.idRecipe)} data-key={props.idRecipe} className={`${classes.bookmark} ${like}`} />
 
-      <Dialog
-        className={classes.dialog}
+      <Dialog className={classes.dialog}
         open={open}
         TransitionComponent={Transition}
         keepMounted
@@ -149,4 +168,7 @@ const CardContentHead = (props: { idRecipe: number; image: string }): JSX.Elemen
   );
 };
 
-export default CardContentHead;
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+export default connect(({ recipes }) => ({
+  recipes,
+}), { addRecipe, removeRecipe })(CardContentHead);
