@@ -1,4 +1,4 @@
-import Button from '@material-ui/core/Button';
+import { Button } from 'react-bootstrap';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -74,10 +74,10 @@ const CardStyle = makeStyles({
   likeRecipe: {
     backgroundPosition: '0% 0%',
   },
-  gridMain : {
+  gridMain: {
     gridGap: '24px 48px',
   },
-  gridItem:  {
+  gridItem: {
     padding: '24px 0',
   },
 });
@@ -115,13 +115,13 @@ export const RecipeCard = (props: { typeOfRecipe: string }): JSX.Element => {
       )}
       {service.status === 'error' && <div>Error</div>}
 
-      <Grid container justify='center' spacing={0} className={classes.gridMain}>
+      <Grid container justify="center" spacing={0} className={classes.gridMain}>
         {service.status === 'loaded' &&
           service.data.results.map(card => (
             <Grid item key={card.id} className={classes.gridItem}>
               <Card className={classes.root}>
                 <CardContentHead image={card.image} idRecipe={card.id} />
-                <CardContent className={styles['cardContent']}>
+                <CardContent className='theme-card'>
                   <div className={styles['cardContentHead']}>
                     <div className={styles['time']}>
                       <IconClock width={20} height={20} alt="Clock" />
@@ -159,10 +159,10 @@ export const RecipeCard = (props: { typeOfRecipe: string }): JSX.Element => {
                   </Typography>
                 </CardContent>
 
-                <CardActions className={styles['cardWrapButton']}>
-                  <Button className={styles['cardButton']} target="_blank" variant="contained" href={`/recipe/${card.id}`}>
-                    Learn More
-                  </Button>
+                <CardActions className="d-flex p-0 justify-content-center theme-card">
+                  <a href={`/recipe/${card.id}`} className={styles['cardButton']}>
+                   <Button className="theme-button" variant="primary">Learn More</Button>
+                  </a>
                 </CardActions>
               </Card>
             </Grid>

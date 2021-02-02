@@ -1,11 +1,11 @@
-import { 
+import {
   Grid,
   CardMedia,
   CardContent,
   Typography,
   CircularProgress,
   Tabs,
-  Tab
+  Tab,
 } from '@material-ui/core';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import React, { useEffect, useState } from 'react';
@@ -18,7 +18,6 @@ import VideocamIcon from '@material-ui/icons/Videocam';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import Bookmark from '@/assets/images/bookmark.png';
 import styles from './recipe.scss';
-
 
 const API_KEY = '6f98d3f931d94627ba3e8bbe05155764'; //6f98d3f931d94627ba3e8bbe05155764';
 
@@ -39,9 +38,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <div>{children}</div>
-      )}
+      {value === index && <div>{children}</div>}
     </div>
   );
 }
@@ -69,7 +66,7 @@ const timeConvert = (num: number): string => {
 
 const CardStyle = makeStyles((theme: Theme) =>
   createStyles({
-    gridMain : {
+    gridMain: {
       display: 'grid',
       gridTemplateColumns: '2fr 3fr',
       '& > * > * > div.MuiBox-root': {
@@ -79,7 +76,7 @@ const CardStyle = makeStyles((theme: Theme) =>
         gridTemplateColumns: '1fr',
       },
     },
-    cardImage : {
+    cardImage: {
       minHeight: '500px',
       [theme.breakpoints.down('sm')]: {
         minHeight: '350px',
@@ -101,7 +98,7 @@ const CardStyle = makeStyles((theme: Theme) =>
     likeRecipe: {
       backgroundPosition: '0% 0%',
     },
-    panelTabs : {
+    panelTabs: {
       marginTop: '40px',
       '& > * > span': {
         backgroundColor: '#f0f0f0',
@@ -110,17 +107,17 @@ const CardStyle = makeStyles((theme: Theme) =>
         marginTop: '20px',
       },
     },
- }),
+  })
 );
 
 const CardRecipe = (): JSX.Element => {
   const classes = CardStyle();
   const [value, setValue] = useState(0);
   const [info, setData] = useState<Service<IRootObject>>({
-    status: 'loading'
+    status: 'loading',
   });
-  const id = (window.location.pathname).replace('/recipe/', '');
- 
+  const id = window.location.pathname.replace('/recipe/', '');
+
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
@@ -133,7 +130,7 @@ const CardRecipe = (): JSX.Element => {
       })
       .catch(error => setData(error));
   }, []);
-  
+
   const [like, setClassLike] = useState(() => {
     const arrayIds: Array<string> = localStorage.getItem('likeRecipe')
       ? JSON.parse(localStorage.getItem('likeRecipe') || '{}')
@@ -159,22 +156,21 @@ const CardRecipe = (): JSX.Element => {
   return (
     <div className={`${styles['wrapCardRecipe']} bg-light`}>
       <div className={styles['cardRecipe']}>
-        
         {info.status === 'loading' && (
           <div style={{ paddingTop: '50px', paddingBottom: '50px' }}>
             <CircularProgress className={classes.loading} />
           </div>
         )}
 
-        {info.status === "loaded" && ( 
-        <Grid container className={classes.gridMain} spacing={0}>
-          <Grid item >
-            <CardMedia
-              component="img"
-              className={classes.cardImage}
-              alt={`Image of recipe ${info.data.title}`}
-              image={info.data.image}
-              title={`Image of recipe ${info.data.title}`}
+        {info.status === 'loaded' && (
+          <Grid container className={classes.gridMain} spacing={0}>
+            <Grid item>
+              <CardMedia
+                component="img"
+                className={classes.cardImage}
+                alt={`Image of recipe ${info.data.title}`}
+                image={info.data.image}
+                title={`Image of recipe ${info.data.title}`}
               />
               <div className={styles['wrapCardClock']}>
                 <div>
@@ -184,7 +180,7 @@ const CardRecipe = (): JSX.Element => {
                   <span>Cooking Time</span>
                   <div>{timeConvert(info.data.readyInMinutes)}</div>
                 </div>
-                
+
                 <div>
                   <IconSaucepan alt="Saucepan" />
                 </div>
@@ -193,73 +189,79 @@ const CardRecipe = (): JSX.Element => {
                   <div>{info.data.servings}</div>
                 </div>
               </div>
-          </Grid>
-          
-          <Grid item className={styles['cardBlockContent']}>
-            <div>
-              <span onClick={() => clickLikeBookmark(info.data.id)} data-key={info.data.id} className={`${classes.bookmark} ${like}`}></span>
-            </div>
-          
-            {info.data.vegan && ( 
-              <span><Brightness1Icon style={{ fontSize: 15, color: '#14c4bb' }} /> vegan</span>
-            )}
-            {info.data.vegan && ( 
-              <span><Brightness1Icon style={{ fontSize: 15, color: '#3078B4', marginLeft: '15px' }} /> healthy</span>
-            )}
-            
-            <Typography gutterBottom variant="h5" component="h1">
-              {info.data.title}
-            </Typography>
-            
-            <div className={styles['cardAddInfo']}>
-              {info.data.vegetarian && ( 
-                <span>Vegetarian</span> 
-              )}
-              {info.data.glutenFree && ( 
-                <span>Gluten Free</span> 
-              )}
-              {info.data.dairyFree && ( 
-                <span>Dairy Free</span> 
-              )}
-            </div>
+            </Grid>
 
-            
-            <Tabs className={classes.panelTabs} value={value} onChange={handleChange} aria-label="description recipe">
-              <Tab label="Ingredients" {...a11yProps(0)} />
-              <Tab label="Steps" {...a11yProps(1)} />
-            </Tabs>
-            
-            <TabPanel value={value} index={0}>
+            <Grid item className={styles['cardBlockContent']}>
+              <div>
+                <span
+                  onClick={() => clickLikeBookmark(info.data.id)}
+                  data-key={info.data.id}
+                  className={`${classes.bookmark} ${like}`}
+                ></span>
+              </div>
+
+              {info.data.vegan && (
+                <span>
+                  <Brightness1Icon style={{ fontSize: 15, color: '#14c4bb' }} /> vegan
+                </span>
+              )}
+              {info.data.vegan && (
+                <span>
+                  <Brightness1Icon style={{ fontSize: 15, color: '#3078B4', marginLeft: '15px' }} />{' '}
+                  healthy
+                </span>
+              )}
+
+              <Typography gutterBottom variant="h5" component="h1">
+                {info.data.title}
+              </Typography>
+
+              <div className={styles['cardAddInfo']}>
+                {info.data.vegetarian && <span>Vegetarian</span>}
+                {info.data.glutenFree && <span>Gluten Free</span>}
+                {info.data.dairyFree && <span>Dairy Free</span>}
+              </div>
+
+              <Tabs
+                className={classes.panelTabs}
+                value={value}
+                onChange={handleChange}
+                aria-label="description recipe"
+              >
+                <Tab label="Ingredients" {...a11yProps(0)} />
+                <Tab label="Steps" {...a11yProps(1)} />
+              </Tabs>
+
+              <TabPanel value={value} index={0}>
                 <div className={styles['cardTabContent']}>
-                <ul>
-                      {info.data.extendedIngredients.map((item, i) => (
-                        <li key={i}>{item.original}</li> )
-                      )}
-                    </ul>
-                 </div>
-            </TabPanel>
+                  <ul>
+                    {info.data.extendedIngredients.map((item, i) => (
+                      <li key={i}>{item.original}</li>
+                    ))}
+                  </ul>
+                </div>
+              </TabPanel>
 
-            <TabPanel value={value} index={1}>
-              <CardContent className={styles['cardTabContent']}>
-                  {info.data.analyzedInstructions.map(item => (
-                      item.steps.map((step, i) => (
-                                <div key={i}>
-                                  <span><CheckCircleIcon style={{ fontSize: 20, color: '#4a6a83' }} /> STEP {i+1} </span>
-                                  <p>{step.step}</p>
-                                </div>
-                              ))
-                      )
+              <TabPanel value={value} index={1}>
+                <CardContent className={styles['cardTabContent']}>
+                  {info.data.analyzedInstructions.map(item =>
+                    item.steps.map((step, i) => (
+                      <div key={i}>
+                        <span>
+                          <CheckCircleIcon style={{ fontSize: 20, color: '#4a6a83' }} /> STEP{' '}
+                          {i + 1}{' '}
+                        </span>
+                        <p>{step.step}</p>
+                      </div>
+                    ))
                   )}
-              </CardContent>
-            </TabPanel>
+                </CardContent>
+              </TabPanel>
+            </Grid>
           </Grid>
-        </Grid>
         )}
-
-
-
       </div>
     </div>
   );
 };
-export default CardRecipe; 
+export default CardRecipe;

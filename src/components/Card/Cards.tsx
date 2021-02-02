@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Card from './CardUI';
 
 class Cards extends Component {
@@ -17,7 +17,7 @@ class Cards extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
