@@ -156,8 +156,8 @@ const CardRecipe = (): JSX.Element => {
 
 
   return (
-    <div className={`${styles['wrapCardRecipe']} bg-light`}>
-      <div className={styles['cardRecipe']}>
+    <div className={`${styles['wrapCardRecipe']} bg-light theme-container`}>
+      <div className={`${styles['cardRecipe']} theme-card theme-title`}>
 
         {info.status === 'loading' && (
           <div style={{ paddingTop: '50px', paddingBottom: '50px' }}>
