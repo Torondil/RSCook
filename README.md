@@ -4,6 +4,8 @@
 
 https://rscook.netlify.app/
 
+### [PR link](https://github.com/RSCloneWars/RSCook/pull/34)
+
 ### Build status
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d1861232-cc80-4196-8d91-9ee9ddc6bc3b/deploy-status)](https://app.netlify.com/sites/rscook/deploys)
 
