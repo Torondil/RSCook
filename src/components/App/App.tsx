@@ -51,7 +51,7 @@ const App = (): JSX.Element => {
           <Route exact path="/devteam">
             <Developers />
           </Route>
-          <Route exact path="/recipe/">
+          <Route path="/recipe/">
             <CardRecipe />
           </Route>
         </Switch>

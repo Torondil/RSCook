@@ -5,7 +5,7 @@ import {
   Typography,
   CircularProgress,
   Tabs,
-  Tab,
+  Tab
 } from '@material-ui/core';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import React, { useEffect, useState } from 'react';
@@ -14,12 +14,10 @@ import { IRootObject } from '@/types/CardRecipe';
 import IconSaucepan from '@/assets/svg/004-cake.svg';
 import Brightness1Icon from '@material-ui/icons/Brightness1';
 import AccessTime from '@material-ui/icons/AccessTime';
-import VideocamIcon from '@material-ui/icons/Videocam';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import Bookmark from '@/assets/images/bookmark.png';
 import styles from './recipe.scss';
-
-const API_KEY = '6f98d3f931d94627ba3e8bbe05155764'; //6f98d3f931d94627ba3e8bbe05155764';
+import CardRecipeSteps from '@/components/CardRecipe/CardRecipeSteps';
+import { FreeApiKey1 } from '@/constants/index';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -116,14 +114,14 @@ const CardRecipe = (): JSX.Element => {
   const [info, setData] = useState<Service<IRootObject>>({
     status: 'loading',
   });
-  const id = window.location.pathname.replace('/recipe/', '');
-
+  const id = (window.location.pathname).replace('/recipe/', '');
+  let temp: Array<string> = [];
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
 
   useEffect(() => {
-    fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`)
+    fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${FreeApiKey1}`)
       .then(response => response.json())
       .then(response => {
         setData({ status: 'loaded', data: response });
@@ -156,6 +154,7 @@ const CardRecipe = (): JSX.Element => {
   return (
     <div className={`${styles['wrapCardRecipe']} bg-light`}>
       <div className={styles['cardRecipe']}>
+
         {info.status === 'loading' && (
           <div style={{ paddingTop: '50px', paddingBottom: '50px' }}>
             <CircularProgress className={classes.loading} />
@@ -190,71 +189,56 @@ const CardRecipe = (): JSX.Element => {
                 </div>
               </div>
             </Grid>
-
+          
             <Grid item className={styles['cardBlockContent']}>
               <div>
-                <span
-                  onClick={() => clickLikeBookmark(info.data.id)}
-                  data-key={info.data.id}
-                  className={`${classes.bookmark} ${like}`}
-                ></span>
+                <span onClick={() => clickLikeBookmark(info.data.id)} data-key={info.data.id} className={`${classes.bookmark} ${like}`}></span>
               </div>
-
-              {info.data.vegan && (
-                <span>
-                  <Brightness1Icon style={{ fontSize: 15, color: '#14c4bb' }} /> vegan
-                </span>
+          
+              {info.data.vegan && ( 
+                <span><Brightness1Icon style={{ fontSize: 15, color: '#14c4bb' }} /> vegan</span>
               )}
-              {info.data.vegan && (
-                <span>
-                  <Brightness1Icon style={{ fontSize: 15, color: '#3078B4', marginLeft: '15px' }} />{' '}
-                  healthy
-                </span>
+              {info.data.veryHealthy && ( 
+                <span><Brightness1Icon style={{ fontSize: 15, color: '#3078B4', marginLeft: '15px' }} /> healthy</span>
               )}
-
+              
               <Typography gutterBottom variant="h5" component="h1">
                 {info.data.title}
               </Typography>
-
+              
               <div className={styles['cardAddInfo']}>
-                {info.data.vegetarian && <span>Vegetarian</span>}
-                {info.data.glutenFree && <span>Gluten Free</span>}
-                {info.data.dairyFree && <span>Dairy Free</span>}
+                {info.data.vegetarian && ( 
+                  <span>Vegetarian</span> 
+                )}
+                {info.data.glutenFree && ( 
+                  <span>Gluten Free</span> 
+                )}
+                {info.data.dairyFree && ( 
+                  <span>Dairy Free</span> 
+                )}
               </div>
-
-              <Tabs
-                className={classes.panelTabs}
-                value={value}
-                onChange={handleChange}
-                aria-label="description recipe"
-              >
+            
+              <Tabs className={classes.panelTabs} value={value} onChange={handleChange} aria-label="description recipe">
                 <Tab label="Ingredients" {...a11yProps(0)} />
                 <Tab label="Steps" {...a11yProps(1)} />
               </Tabs>
-
+            
               <TabPanel value={value} index={0}>
                 <div className={styles['cardTabContent']}>
                   <ul>
-                    {info.data.extendedIngredients.map((item, i) => (
-                      <li key={i}>{item.original}</li>
-                    ))}
+                      {info.data.extendedIngredients.map((item, i) => (
+                        <li key={i}>{item.original}</li>
+                      ))}
                   </ul>
                 </div>
               </TabPanel>
 
               <TabPanel value={value} index={1}>
                 <CardContent className={styles['cardTabContent']}>
-                  {info.data.analyzedInstructions.map(item =>
-                    item.steps.map((step, i) => (
-                      <div key={i}>
-                        <span>
-                          <CheckCircleIcon style={{ fontSize: 20, color: '#4a6a83' }} /> STEP{' '}
-                          {i + 1}{' '}
-                        </span>
-                        <p>{step.step}</p>
-                      </div>
-                    ))
+                  {info.data.analyzedInstructions.forEach(({ steps }) =>
+                    steps.map(item => temp.push(item.step))
                   )}
+                  <CardRecipeSteps arraySteps={temp} />
                 </CardContent>
               </TabPanel>
             </Grid>
