@@ -105,6 +105,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3"
+    "@types/react-redux": "^7.1.16",
+    "cross-env": "^7.0.3",
+    "redux-devtools-extension": "^2.13.8"
   }
 }

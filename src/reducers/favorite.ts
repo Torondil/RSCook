@@ -8,13 +8,20 @@ type Recipe = {
   title?: string;
 };
 
-let STORAGE = load({ namespace: 'recipes-list' });
+// type STORAGE = {
+//   colorTheme: boolean;
+//   recipes: Recipe;
+// };
+
+let STORAGE: any = load({ namespace: 'recipes-list' });
 
 if (!STORAGE || !STORAGE.recipes || !STORAGE.recipes.length) {
   STORAGE = {
     recipes: [],
   };
 }
+
+const qwerty: Array<Recipe> = STORAGE.recipes;
 
 const recipes = (state = STORAGE.recipes, { type, id, image, title }: Recipe): Array<Recipe> => {
   switch (type) {
