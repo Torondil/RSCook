@@ -5,7 +5,7 @@ import {
   Typography,
   CircularProgress,
   Tabs,
-  Tab,
+  Tab
 } from '@material-ui/core';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import React, { useEffect, useState } from 'react';
@@ -14,8 +14,6 @@ import { IRootObject } from '@/types/CardRecipe';
 import IconSaucepan from '@/assets/svg/004-cake.svg';
 import Brightness1Icon from '@material-ui/icons/Brightness1';
 import AccessTime from '@material-ui/icons/AccessTime';
-import VideocamIcon from '@material-ui/icons/Videocam';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import Bookmark from '@/assets/images/bookmark.png';
 import styles from './recipe.scss';
 import CardRecipeSteps from '@/components/CardRecipe/CardRecipeSteps';
@@ -117,7 +115,7 @@ const CardRecipe = (): JSX.Element => {
     status: 'loading',
   });
   const id = (window.location.pathname).replace('/recipe/', '');
-
+  let temp: Array<string> = [];
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
@@ -152,8 +150,6 @@ const CardRecipe = (): JSX.Element => {
     }
     localStorage.setItem('likeRecipe', JSON.stringify(arrayIds));
   };
-  let temp: Array<string> = [];
-
 
   return (
     <div className={`${styles['wrapCardRecipe']} bg-light`}>
@@ -193,47 +189,46 @@ const CardRecipe = (): JSX.Element => {
                 </div>
               </div>
             </Grid>
-
+          
             <Grid item className={styles['cardBlockContent']}>
               <div>
                 <span onClick={() => clickLikeBookmark(info.data.id)} data-key={info.data.id} className={`${classes.bookmark} ${like}`}></span>
               </div>
-
-              {info.data.vegan && (
+          
+              {info.data.vegan && ( 
                 <span><Brightness1Icon style={{ fontSize: 15, color: '#14c4bb' }} /> vegan</span>
               )}
-              {info.data.veryHealthy && (
+              {info.data.veryHealthy && ( 
                 <span><Brightness1Icon style={{ fontSize: 15, color: '#3078B4', marginLeft: '15px' }} /> healthy</span>
               )}
-
+              
               <Typography gutterBottom variant="h5" component="h1">
                 {info.data.title}
               </Typography>
-
+              
               <div className={styles['cardAddInfo']}>
-                {info.data.vegetarian && (
-                  <span>Vegetarian</span>
+                {info.data.vegetarian && ( 
+                  <span>Vegetarian</span> 
                 )}
-                {info.data.glutenFree && (
-                  <span>Gluten Free</span>
+                {info.data.glutenFree && ( 
+                  <span>Gluten Free</span> 
                 )}
-                {info.data.dairyFree && (
-                  <span>Dairy Free</span>
+                {info.data.dairyFree && ( 
+                  <span>Dairy Free</span> 
                 )}
-
               </div>
-
+            
               <Tabs className={classes.panelTabs} value={value} onChange={handleChange} aria-label="description recipe">
                 <Tab label="Ingredients" {...a11yProps(0)} />
                 <Tab label="Steps" {...a11yProps(1)} />
               </Tabs>
-
+            
               <TabPanel value={value} index={0}>
                 <div className={styles['cardTabContent']}>
                   <ul>
-                    {info.data.extendedIngredients.map((item, i) => (
-                      <li key={i}>{item.original}</li>
-                    ))}
+                      {info.data.extendedIngredients.map((item, i) => (
+                        <li key={i}>{item.original}</li>
+                      ))}
                   </ul>
                 </div>
               </TabPanel>
