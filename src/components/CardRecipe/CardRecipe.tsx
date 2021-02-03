@@ -18,6 +18,7 @@ import VideocamIcon from '@material-ui/icons/Videocam';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import Bookmark from '@/assets/images/bookmark.png';
 import styles from './recipe.scss';
+import CardRecipeSteps from '@/components/CardRecipe/CardRecipeSteps';
 
 const API_KEY = '6f98d3f931d94627ba3e8bbe05155764'; //6f98d3f931d94627ba3e8bbe05155764';
 
@@ -116,8 +117,8 @@ const CardRecipe = (): JSX.Element => {
   const [info, setData] = useState<Service<IRootObject>>({
     status: 'loading',
   });
-  const id = window.location.pathname.replace('/recipe/', '');
-
+  const id = (window.location.pathname).replace('/recipe/', '');
+  
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
@@ -152,10 +153,13 @@ const CardRecipe = (): JSX.Element => {
     }
     localStorage.setItem('likeRecipe', JSON.stringify(arrayIds));
   };
+  let temp: Array<string> = [];
+  
 
   return (
     <div className={`${styles['wrapCardRecipe']} bg-light`}>
       <div className={styles['cardRecipe']}>
+        
         {info.status === 'loading' && (
           <div style={{ paddingTop: '50px', paddingBottom: '50px' }}>
             <CircularProgress className={classes.loading} />
@@ -189,50 +193,43 @@ const CardRecipe = (): JSX.Element => {
                   <div>{info.data.servings}</div>
                 </div>
               </div>
-            </Grid>
-
-            <Grid item className={styles['cardBlockContent']}>
-              <div>
-                <span
-                  onClick={() => clickLikeBookmark(info.data.id)}
-                  data-key={info.data.id}
-                  className={`${classes.bookmark} ${like}`}
-                ></span>
-              </div>
-
-              {info.data.vegan && (
-                <span>
-                  <Brightness1Icon style={{ fontSize: 15, color: '#14c4bb' }} /> vegan
-                </span>
+          </Grid>
+          
+          <Grid item className={styles['cardBlockContent']}>
+            <div>
+              <span onClick={() => clickLikeBookmark(info.data.id)} data-key={info.data.id} className={`${classes.bookmark} ${like}`}></span>
+            </div>
+          
+            {info.data.vegan && ( 
+              <span><Brightness1Icon style={{ fontSize: 15, color: '#14c4bb' }} /> vegan</span>
+            )}
+            {info.data.veryHealthy && ( 
+              <span><Brightness1Icon style={{ fontSize: 15, color: '#3078B4', marginLeft: '15px' }} /> healthy</span>
+            )}
+            
+            <Typography gutterBottom variant="h5" component="h1">
+              {info.data.title}
+            </Typography>
+            
+            <div className={styles['cardAddInfo']}>
+              {info.data.vegetarian && ( 
+                <span>Vegetarian</span> 
               )}
-              {info.data.vegan && (
-                <span>
-                  <Brightness1Icon style={{ fontSize: 15, color: '#3078B4', marginLeft: '15px' }} />{' '}
-                  healthy
-                </span>
+              {info.data.glutenFree && ( 
+                <span>Gluten Free</span> 
               )}
-
-              <Typography gutterBottom variant="h5" component="h1">
-                {info.data.title}
-              </Typography>
-
-              <div className={styles['cardAddInfo']}>
-                {info.data.vegetarian && <span>Vegetarian</span>}
-                {info.data.glutenFree && <span>Gluten Free</span>}
-                {info.data.dairyFree && <span>Dairy Free</span>}
-              </div>
-
-              <Tabs
-                className={classes.panelTabs}
-                value={value}
-                onChange={handleChange}
-                aria-label="description recipe"
-              >
-                <Tab label="Ingredients" {...a11yProps(0)} />
-                <Tab label="Steps" {...a11yProps(1)} />
-              </Tabs>
-
-              <TabPanel value={value} index={0}>
+              {info.data.dairyFree && ( 
+                <span>Dairy Free</span> 
+              )}
+              
+            </div>
+            
+            <Tabs className={classes.panelTabs} value={value} onChange={handleChange} aria-label="description recipe">
+              <Tab label="Ingredients" {...a11yProps(0)} />
+              <Tab label="Steps" {...a11yProps(1)} />
+            </Tabs>
+            
+            <TabPanel value={value} index={0}>
                 <div className={styles['cardTabContent']}>
                   <ul>
                     {info.data.extendedIngredients.map((item, i) => (
@@ -240,25 +237,18 @@ const CardRecipe = (): JSX.Element => {
                     ))}
                   </ul>
                 </div>
-              </TabPanel>
+            </TabPanel>
 
-              <TabPanel value={value} index={1}>
-                <CardContent className={styles['cardTabContent']}>
-                  {info.data.analyzedInstructions.map(item =>
-                    item.steps.map((step, i) => (
-                      <div key={i}>
-                        <span>
-                          <CheckCircleIcon style={{ fontSize: 20, color: '#4a6a83' }} /> STEP{' '}
-                          {i + 1}{' '}
-                        </span>
-                        <p>{step.step}</p>
-                      </div>
-                    ))
-                  )}
-                </CardContent>
-              </TabPanel>
-            </Grid>
+            <TabPanel value={value} index={1}>
+              <CardContent className={styles['cardTabContent']}>
+                {info.data.analyzedInstructions.forEach(({steps}) => 
+                  steps.map(item => temp.push(item.step))
+                )}
+                <CardRecipeSteps arraySteps={temp} />
+              </CardContent>
+            </TabPanel>
           </Grid>
+        </Grid>
         )}
       </div>
     </div>
