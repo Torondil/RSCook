@@ -1,10 +1,10 @@
 const FilterUrl = 'https://api.spoonacular.com/recipes/complexSearch';
+const FilterUrl2 = 'https://api.spoonacular.com/recipes/findByIngredients';
 
-const FreeApiKey1 = `be273a8565fb42c5a9a79ada8306fc43`;
-//3c7502ce108f4a94b059adc1b3a86117
-//f959968ba54b4ba9bc92751f3f4269e8
+const FreeApiKey1 = '6351083bfefe481ea3dd00009efd4c7b';
+const FreeApiKey2 = 'ab77fadee9b6494c8498e9c2ca354e52';
 
-const stateNumber = 25;
+const stateNumber = 10;
 
 const CHANGE_THEME = 'CHANGE_THEME';
 
@@ -12,4 +12,4 @@ const ADD_RECIPE = 'ADD_RECIPE';
 
 const REMOVE_RECIPE = 'REMOVE_RECIPE';
 
-export { FilterUrl, FreeApiKey1, stateNumber, CHANGE_THEME, ADD_RECIPE, REMOVE_RECIPE };
+export { FilterUrl, FilterUrl2, FreeApiKey1, FreeApiKey2, stateNumber, CHANGE_THEME, ADD_RECIPE, REMOVE_RECIPE };
