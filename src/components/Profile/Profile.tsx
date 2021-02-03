@@ -32,7 +32,6 @@ type ProfileProps = {
 };
 
 const Profile = ({ recipes }: ProfileProps) => {
-  console.log('recipes: ', recipes);
   const classes = CardStyle();
   return (
     <Grid container justify="center" spacing={0} className={classes.gridMain}>

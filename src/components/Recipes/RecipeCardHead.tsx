@@ -81,17 +81,6 @@ const CardContentHead = (props: { title: string; idRecipe: number; image: string
 
   const checkRecipesList = (recipes: Array<Recipe>, id: number): boolean => recipes.some((item: Recipe) => item.id === id);
 
-  const handleClick = (id: number) => {
-    const { title, image, recipes, addRecipe, removeRecipe } = props;
-    if (checkRecipesList(recipes, id)) {
-      removeRecipe(id);
-      setClassLike('');
-    } else {
-      addRecipe(id, image, title);
-      setClassLike(classes.likeRecipe);
-    }
-  };
-
   const handleClose = () => {
     setOpenDialog(false);
   };
@@ -102,6 +91,23 @@ const CardContentHead = (props: { title: string; idRecipe: number; image: string
     } else {
       setOpenDialog(true);
     }
+  };
+
+  const handleClick = (id: number) => {
+    const { recipes, removeRecipe } = props;
+    if (checkRecipesList(recipes, id)) {
+      removeRecipe(id);
+      setClassLike('');
+    } else {
+      handleDialog();
+    }
+  };
+
+  const addToFavorit = (id: number) => {
+    const { title, image, addRecipe } = props;
+    addRecipe(id, image, title);
+    setOpenDialog(false);
+    setClassLike(classes.likeRecipe);
   };
 
   const clickLikeBookmark = (id: number): void => {
@@ -124,12 +130,10 @@ const CardContentHead = (props: { title: string; idRecipe: number; image: string
     <div>
       <CardMedia className={classes.media} image={props.image} title="Image of recipe" />
       <span
-        onClick={handleDialog}
+        onClick={() => handleClick(props.idRecipe)}
         data-key={props.idRecipe}
         className={`${classes.bookmark} ${like}`}
       />
-      {/* <span onClick={handleDialog} data-key={props.idRecipe} className={`${classes.bookmark} ${like}`} /> */}
-      <span onClick={() => handleClick(props.idRecipe)} data-key={props.idRecipe} className={`${classes.bookmark} ${like}`} />
 
       <Dialog className={classes.dialog}
         open={open}
@@ -146,8 +150,9 @@ const CardContentHead = (props: { title: string; idRecipe: number; image: string
         </DialogContent>
         <DialogActions>
           <Button
-            className="outline-primary d-flex align-items-center theme-button"
-            onClick={() => clickLikeBookmark(props.idRecipe)}
+            className={classes.addBtn}
+            onClick={() => addToFavorit(props.idRecipe)}
+            color="primary"
           >
             <StarIcon style={{ color: '#f8f9fa', fontSize: 20 }} />
             Add
