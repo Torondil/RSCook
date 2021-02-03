@@ -31,7 +31,7 @@ const LoadStyle = makeStyles({
 
 const BASE_RANDOMPATH = 'https://api.spoonacular.com/recipes/random';
 const NUMBER = '20';
-const API_KEY = '3c7502ce108f4a94b059adc1b3a86117';
+const API_KEY = 'be273a8565fb42c5a9a79ada8306fc43';
 // const API_KEY = '6f98d3f931d94627ba3e8bbe05155764';
 
 export const Slider = (): JSX.Element => {
