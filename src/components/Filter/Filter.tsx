@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from 'react';
 
-// import styles from '@/components/Filter/Filter.scss';
-import { FilterUrl, FreeApiKey1, stateNumber } from '@/constants';
-import { IFilter } from '@/types/Filter';
+import { FilterUrl, FreeApiKey1, FreeApiKey2, stateNumber } from '@/constants';
+import { IFilter, IrecipeInfo } from '@/types/Filter';
 import { Service } from '@/types/Service';
+import Searchcard from '@/components/Searchcard';
+import styles from './Filter.scss';
 
 const Filter = (): JSX.Element => {
-  const [result, setResult] = useState<Service<IFilter[]>>({
+  const [result, setResult] = useState<Service<IFilter>>({
     status: 'loading',
   });
   const [stateQuery, setStateQuery] = useState<string>('');
 
   useEffect(() => {
     if (result.status === 'loaded') {
-      console.log(result.data);
+      // console.log(result.data.results)
     }
   }, [result]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // console.log(`${FilterUrl}?query=${stateQuery}&maxFat=25&number=${stateNumber}&apiKey=${stateApiKey}`);
-    fetch(`${FilterUrl}?query=${stateQuery}&maxFat=25&number=${stateNumber}&apiKey=${FreeApiKey1}`)
+    fetch(`${FilterUrl}?query=${stateQuery}&maxFat=8&number=${stateNumber}&apiKey=${FreeApiKey1}`)
       .then(response => response.json())
-      .then((response: IFilter[]) => setResult({ status: 'loaded', data: response }))
+      .then((response: IFilter) => setResult({ status: 'loaded', data: response }))
       .catch((error: Error) => setResult({ status: 'error', error }));
   };
 
@@ -31,13 +31,23 @@ const Filter = (): JSX.Element => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="query">
-        Запрос
-        <input id="query" type="text" onChange={handleChangeQuery} />
-      </label>
-      <button type="submit">ok</button>
-    </form>
+    <div className='search_area'>
+      <form onSubmit={handleSubmit} className="form-inline">
+        <div className="form-group mx-sm-3 mb-2">
+          <label htmlFor="query" className="sr-only">Search by name</label>
+          <input id="query" type="text" className="form-control" placeholder='Input title' onChange={handleChangeQuery} />
+        </div>
+        <button type="submit" className="btn btn-primary mb-2">Ok</button>
+      </form>
+      <div className={styles['box']}>
+        {result.status === "loaded" && (result.data.results.map(card => <Searchcard
+          id={card.id}
+          image={card.image}
+          title={card.title}
+        />))
+        }
+      </div>
+    </div>
   );
 };
 

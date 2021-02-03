@@ -20,10 +20,13 @@ const NaviBar: React.FC = () => (
           <Link className="nav-link" to="/search">
             Let's search
             </Link>
-        </Nav>
-        <Nav>
-          <Link className="nav-link" to="/profile">
-            Your kitchen
+            <Link className="nav-link" to="/ingrsearch">
+              Lets's look in fridge
+            </Link>
+          </Nav>
+          <Nav>
+            <Link className="nav-link" to="/profile">
+              Your kitchen
               <Icon />
           </Link>
         </Nav>
