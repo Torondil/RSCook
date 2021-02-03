@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux';
 
-import colorTheme from '@/reducers/colorTheme';
 import recipes from '@/reducers/favorite';
 
-const rootReducer = combineReducers({ colorTheme, recipes });
+const rootReducer = combineReducers({ recipes });
 
 export default rootReducer;
