@@ -45,7 +45,7 @@ const timeConvert = (num: number): string => {
   return ` ${out} ${minutes} min`;
 };
 
-const CardStyle = makeStyles({
+export const CardStyle = makeStyles({
   root: {
     maxWidth: 260,
     borderRadius: '15px',
@@ -120,7 +120,7 @@ export const RecipeCard = (props: { typeOfRecipe: string }): JSX.Element => {
           service.data.results.map(card => (
             <Grid item key={card.id} className={classes.gridItem}>
               <Card className={classes.root}>
-                <CardContentHead image={card.image} idRecipe={card.id} />
+                <CardContentHead image={card.image} idRecipe={card.id} title={card.title} />
                 <CardContent className='theme-card'>
                   <div className={styles['cardContentHead']}>
                     <div className={styles['time']}>

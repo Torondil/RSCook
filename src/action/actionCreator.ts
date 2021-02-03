@@ -8,6 +8,8 @@ type Theme = {
 type Recipe = {
   type: string;
   id: number;
+  image?: string;
+  title?: string;
 };
 
 export const changeTheme = (theme: boolean): Theme => ({
@@ -15,9 +17,11 @@ export const changeTheme = (theme: boolean): Theme => ({
   theme,
 });
 
-export const addRecipe = (id: number): Recipe => ({
+export const addRecipe = (id: number, image: string, title: string): Recipe => ({
   type: ADD_RECIPE,
   id,
+  image,
+  title,
 });
 
 export const removeRecipe = (id: number): Recipe => ({

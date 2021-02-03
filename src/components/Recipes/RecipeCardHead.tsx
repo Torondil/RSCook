@@ -75,9 +75,11 @@ const CardStyle = makeStyles({
 
 type Recipe = {
   id: number;
+  image: string;
+  title: string;
 };
 
-const CardContentHead = (props: { idRecipe: number; image: string, recipes: Array<Recipe>, addRecipe(id: number): void, removeRecipe(id: number): void }): JSX.Element => {
+const CardContentHead = (props: { title: string; idRecipe: number; image: string; recipes: Array<Recipe>; addRecipe(id: number, image: string, title: string): void; removeRecipe(id: number): void }): JSX.Element => {
   const classes = CardStyle();
   const [open, setOpenDialog] = useState(false);
   const [like, setClassLike] = useState(() => {
@@ -90,11 +92,13 @@ const CardContentHead = (props: { idRecipe: number; image: string, recipes: Arra
   const checkRecipesList = (recipes: Array<Recipe>, id: number): boolean => recipes.some((item: Recipe) => item.id === id);
 
   const handleClick = (id: number) => {
-    const { recipes, addRecipe, removeRecipe } = props;
+    const { title, image, recipes, addRecipe, removeRecipe } = props;
     if (checkRecipesList(recipes, id)) {
       removeRecipe(id);
+      setClassLike('');
     } else {
-      addRecipe(id);
+      addRecipe(id, image, title);
+      setClassLike(classes.likeRecipe);
     }
   };
 
