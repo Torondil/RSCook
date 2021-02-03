@@ -21,6 +21,9 @@ const NaviBar = (): JSX.Element => {
             <Link className="nav-link" to="/search">
               Let's search
             </Link>
+            <Link className="nav-link" to="/ingrsearch">
+              Lets's look in fridge
+            </Link>
           </Nav>
           <Nav>
             <Link className="nav-link" to="/profile">

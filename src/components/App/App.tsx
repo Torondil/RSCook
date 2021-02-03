@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NaviBar from '@/components/Navbar';
 import Filter from '@/components/Filter';
+import IngredientSearch from '@/components/IngredientSearch';
 import About from '@/components/About';
 import Main from '@/components/Main';
 import Profile from '@/components/Profile';
@@ -43,6 +44,9 @@ const App = (): JSX.Element => {
           </Route>
           <Route exact path="/search">
             <Filter />
+          </Route>
+          <Route exact path="/ingrsearch">
+            <IngredientSearch />
           </Route>
           <Route exact path="/devteam">
             <Developers />
