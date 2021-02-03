@@ -14,9 +14,6 @@ const Footer = (): JSX.Element => (
       <Link className={styles['footer__menu']} to="/search">
         Let's search
       </Link>
-      <Link className={styles['footer__menu']} to="/bucket">
-        Bucket
-      </Link>
       <Link className={styles['footer__menu']} to="/devteam">
         Development team
       </Link>

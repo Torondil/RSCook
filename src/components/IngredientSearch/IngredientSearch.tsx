@@ -32,12 +32,13 @@ const IngredientSearch = (): JSX.Element => {
 
     return (
       <div>
-      <form onSubmit={handleSubmit} className="form-inline">
+      <form onSubmit={handleSubmit} className="form-inline my-3 ml-3">
+        <p className="theme-title">Let's find your favorite dishes by ingredients in your fridge</p>
         <div className="form-group mx-sm-3 mb-2">
           <label htmlFor="query" className="sr-only">Search by ingredients</label>
           <input id="query" type="text" className="form-control" placeholder='Input ingredients' onChange={handleChangeQuery} />
         </div>
-        <button type="submit" className="btn btn-primary mb-2">Ok</button>
+        <button type="submit" className="btn btn-primary mb-2 theme-button">Ok</button>
       </form>
       <div className={styles['box']}>
     {result.status === "loaded" && (result.data.map(card => <Searchcard
