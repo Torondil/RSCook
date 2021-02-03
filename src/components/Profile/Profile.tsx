@@ -20,6 +20,7 @@ import styles from '@/components/Recipes/recipes.scss';
 
 import { connect } from 'react-redux';
 import { addRecipe, removeRecipe } from '@/action/actionCreator';
+import { RootState } from '@/reducers/index';
 
 type Recipe = {
   id: number;
@@ -28,7 +29,7 @@ type Recipe = {
 };
 
 type ProfileProps = {
-  recipes: Array<Recipe>;
+  recipes: Recipe[];
 };
 
 const Profile = ({ recipes }: ProfileProps) => {
@@ -60,6 +61,6 @@ const Profile = ({ recipes }: ProfileProps) => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-export default connect(({ recipes }: Array<Recipe>) => ({
+export default connect(({ recipes }: RootState) => ({
   recipes,
 }), { addRecipe, removeRecipe })(Profile);
