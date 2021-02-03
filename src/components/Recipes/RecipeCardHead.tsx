@@ -20,6 +20,7 @@ import Bookmark from '@/assets/images/bookmark.png';
 
 import { connect } from 'react-redux';
 import { addRecipe, removeRecipe } from '@/action/actionCreator';
+import { RootState } from '@/reducers/index';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
@@ -66,10 +67,10 @@ const CardStyle = makeStyles({
 type Recipe = {
   id: number;
   image: string;
-  title: string;
+  title?: string;
 };
 
-const CardContentHead = (props: { title: string; idRecipe: number; image: string; recipes: Array<Recipe>; addRecipe(id: number, image: string, title: string): void; removeRecipe(id: number): void }): JSX.Element => {
+const CardContentHead = (props: { title?: string; idRecipe: number; image: string; recipes: Array<Recipe>; addRecipe(id: number, image: string, title?: string): void; removeRecipe(id: number): void }): JSX.Element => {
   const classes = CardStyle();
   const [open, setOpenDialog] = useState(false);
   const [like, setClassLike] = useState(() => {
@@ -150,7 +151,7 @@ const CardContentHead = (props: { title: string; idRecipe: number; image: string
         </DialogContent>
         <DialogActions>
           <Button
-            className={classes.addBtn}
+            className="outline-primary d-flex align-items-center theme-button"
             onClick={() => addToFavorit(props.idRecipe)}
             color="primary"
           >
@@ -169,6 +170,6 @@ const CardContentHead = (props: { title: string; idRecipe: number; image: string
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-export default connect(({ recipes }) => ({
+export default connect(({ recipes }: RootState) => ({
   recipes,
 }), { addRecipe, removeRecipe })(CardContentHead);

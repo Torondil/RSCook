@@ -7,15 +7,12 @@ import { Link } from 'react-router-dom';
 
 const Footer = (): JSX.Element => (
   <footer className="bg-light py-3 theme-container">
-    <Nav className="pr-4 pb-2 justify-content-end">
+    <Nav className="pr-4 pb-3 justify-content-end">
       <Link className={styles['footer__menu']} to="/">
         Main page
       </Link>
       <Link className={styles['footer__menu']} to="/search">
         Let's search
-      </Link>
-      <Link className={styles['footer__menu']} to="/bucket">
-        Bucket
       </Link>
       <Link className={styles['footer__menu']} to="/devteam">
         Development team
@@ -26,7 +23,7 @@ const Footer = (): JSX.Element => (
         <img src={rssLogo} alt="rsschool" />
       </a>
       <span>2021</span>
-      <div className="footer__dev">
+      <div className="footer__dev d-flex flex-wrap">
         <a className={styles['footer__link']} href="https://github.com/Torondil">
           Torondil
         </a>

@@ -10,7 +10,7 @@ const Developers = (): JSX.Element => {
   return (
     <div className="bg-light theme-container">
       <div className="container">
-        <h2 className="developers-title display-3 mb-3 text-center">Development team:</h2>
+        <h2 className="developers-title display-4 my-3 text-center">Development team:</h2>
         <div className="row pb-4">
           <div className="col-md-12 blue-box bio-detail">
             <div className="biogrid container">

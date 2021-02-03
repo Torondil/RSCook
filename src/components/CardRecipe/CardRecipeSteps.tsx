@@ -1,4 +1,4 @@
-import { 
+import {
   Stepper,
   Step,
   StepLabel,
@@ -11,10 +11,26 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import React, { useState } from 'react';
-
+import IconCloche from '@/assets/svg/005-cloche.svg';
+import IconCutlery from '@/assets/images/015-cutlery.png';
 import styles from './recipe.scss';
 
-
+const themeStepper = makeStyles((theme: Theme) =>
+  createStyles({
+    step: {
+      "& > * > * > svg.MuiStepIcon-active" : {
+        color: "#EC8B83",
+      },
+      "& > * > * > svg.MuiStepIcon-completed" : {
+        color: "#007bff",
+      },
+    },
+    alternativeLabel: {},
+    active: {},
+    completed: {},
+    disabled: {},
+  }),
+);
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,23 +41,15 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: theme.spacing(1),
       marginRight: theme.spacing(1),
     },
-    backBtn: {
-      
-    },
-    nextBtn: {
-      color: '#3078B4',
-    },
     actionsContainer: {
       marginBottom: theme.spacing(2),
-    },
-    resetContainer: {
-      padding: theme.spacing(3),
     },
   }),
 );
 
 const CardRecipeSteps = (props: { arraySteps: Array<string> }): JSX.Element => {
   const classes = useStyles();
+  const classesStep = themeStepper();
   const [activeStep, setActiveStep] = useState(0);
   const steps : Array<string> = (props.arraySteps).map((item, i) => `STEP ${i+1}`);
 
@@ -59,9 +67,9 @@ const CardRecipeSteps = (props: { arraySteps: Array<string> }): JSX.Element => {
 
   return (
     <div>
-      <Stepper activeStep={activeStep} orientation="vertical" >
+      <Stepper className="theme-card"  activeStep={activeStep} orientation="vertical" >
         {steps.map((label, index) => (
-          <Step key={label}>
+          <Step key={label} className={classesStep.step}>
             <StepLabel>{label}</StepLabel>
             <StepContent>
               <Typography>{props.arraySteps[index]}</Typography>
@@ -70,15 +78,15 @@ const CardRecipeSteps = (props: { arraySteps: Array<string> }): JSX.Element => {
                   <Button
                     disabled={activeStep === 0}
                     onClick={handleBack}
-                    className={`${classes.button} ${classes.backBtn}`}
+                    className={`${classes.button} ${styles['backBtn']}`}
                   >
-                    <KeyboardArrowLeft/> Back 
+                    <KeyboardArrowLeft/> Back
                   </Button>
                   <Button
                     onClick={handleNext}
-                    className={`${classes.button} ${classes.nextBtn}`}
+                    className={`${classes.button} ${styles['nextBtn']}`}
                   >
-                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}{activeStep === steps.length - 1 ? '' : <KeyboardArrowRight/>}
+                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}{activeStep === steps.length - 1 ? <span>&nbsp;&nbsp;</span> : <KeyboardArrowRight/>}
                   </Button>
                 </div>
               </div>
@@ -87,9 +95,10 @@ const CardRecipeSteps = (props: { arraySteps: Array<string> }): JSX.Element => {
         ))}
       </Stepper>
       {activeStep === steps.length && (
-        <Paper square elevation={0} className={classes.resetContainer}>
-          <Typography>All steps completed - you&apos;re finished</Typography>
-          <Button onClick={handleReset} className={classes.button}>
+        <Paper square elevation={0} className={`${styles['resetContainer']} theme-card`} >
+          <Typography component="h4">Bon appetit!</Typography>
+          <div><IconCloche alt="Cloche" /> <img alt="Cutlery" src={IconCutlery} /></div>
+          <Button onClick={handleReset} color="primary" className={`${classes.button} ${styles['resetBtn']}`}>
             Reset
           </Button>
         </Paper>
@@ -97,4 +106,4 @@ const CardRecipeSteps = (props: { arraySteps: Array<string> }): JSX.Element => {
     </div>
   );
 };
-export default CardRecipeSteps; 
+export default CardRecipeSteps;

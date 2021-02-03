@@ -5,7 +5,7 @@ import {
   Typography,
   CircularProgress,
   Tabs,
-  Tab,
+  Tab
 } from '@material-ui/core';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import React, { useEffect, useState } from 'react';
@@ -14,8 +14,6 @@ import { IRootObject } from '@/types/CardRecipe';
 import IconSaucepan from '@/assets/svg/004-cake.svg';
 import Brightness1Icon from '@material-ui/icons/Brightness1';
 import AccessTime from '@material-ui/icons/AccessTime';
-import VideocamIcon from '@material-ui/icons/Videocam';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import Bookmark from '@/assets/images/bookmark.png';
 import styles from './recipe.scss';
 import CardRecipeSteps from '@/components/CardRecipe/CardRecipeSteps';
@@ -117,7 +115,7 @@ const CardRecipe = (): JSX.Element => {
     status: 'loading',
   });
   const id = (window.location.pathname).replace('/recipe/', '');
-
+  let temp: Array<string> = [];
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
@@ -152,12 +150,10 @@ const CardRecipe = (): JSX.Element => {
     }
     localStorage.setItem('likeRecipe', JSON.stringify(arrayIds));
   };
-  let temp: Array<string> = [];
-
 
   return (
-    <div className={`${styles['wrapCardRecipe']} bg-light`}>
-      <div className={styles['cardRecipe']}>
+    <div className={`${styles['wrapCardRecipe']} bg-light theme-container`}>
+      <div className={`${styles['cardRecipe']} theme-card theme-title`}>
 
         {info.status === 'loading' && (
           <div style={{ paddingTop: '50px', paddingBottom: '50px' }}>
@@ -220,7 +216,6 @@ const CardRecipe = (): JSX.Element => {
                 {info.data.dairyFree && (
                   <span>Dairy Free</span>
                 )}
-
               </div>
 
               <Tabs className={classes.panelTabs} value={value} onChange={handleChange} aria-label="description recipe">
@@ -231,9 +226,9 @@ const CardRecipe = (): JSX.Element => {
               <TabPanel value={value} index={0}>
                 <div className={styles['cardTabContent']}>
                   <ul>
-                    {info.data.extendedIngredients.map((item, i) => (
-                      <li key={i}>{item.original}</li>
-                    ))}
+                      {info.data.extendedIngredients.map((item, i) => (
+                        <li key={i}>{item.original}</li>
+                      ))}
                   </ul>
                 </div>
               </TabPanel>

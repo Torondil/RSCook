@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NaviBar from '@/components/Navbar';
 import Filter from '@/components/Filter';
-import About from '@/components/About';
+import IngredientSearch from '@/components/IngredientSearch';
 import Main from '@/components/Main';
 import Profile from '@/components/Profile';
 import Footer from '@/components/Footer';
@@ -35,14 +35,14 @@ const App = (): JSX.Element => {
           <Route exact path="/">
             <Main />
           </Route>
-          <Route exact path="/about">
-            <About />
-          </Route>
           <Route exact path="/profile">
             <Profile />
           </Route>
           <Route exact path="/search">
             <Filter />
+          </Route>
+          <Route exact path="/ingrsearch">
+            <IngredientSearch />
           </Route>
           <Route exact path="/devteam">
             <Developers />

@@ -13,19 +13,19 @@ const NaviBar: React.FC = () => (
         <Nav className="mr-auto">
           <Link className="nav-link" to="/">
             Main page
-            </Link>
-          <Link className="nav-link" to="/about">
-            About App
-            </Link>
+          </Link>
           <Link className="nav-link" to="/search">
             Let's search
-            </Link>
+          </Link>
+          <Link className="nav-link" to="/ingrsearch">
+            Lets's look in fridge
+          </Link>
         </Nav>
         <Nav>
           <Link className="nav-link" to="/profile">
             Your kitchen
-              <Icon />
-          </Link>
+            <Icon />
+        </Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
