@@ -4,6 +4,8 @@ import { load } from 'redux-localstorage-simple';
 type Recipe = {
   type?: string;
   id: number;
+  image?: string;
+  title?: string;
 };
 
 let STORAGE = load({ namespace: 'recipes-list' });
@@ -14,12 +16,14 @@ if (!STORAGE || !STORAGE.recipes || !STORAGE.recipes.length) {
   };
 }
 
-const recipes = (state = STORAGE.recipes, { type, id }: Recipe): Array<Recipe> => {
+const recipes = (state = STORAGE.recipes, { type, id, image, title }: Recipe): Array<Recipe> => {
   switch (type) {
     case ADD_RECIPE:
       return [
         ...state, {
           id,
+          image,
+          title,
         },
       ];
     case REMOVE_RECIPE:
