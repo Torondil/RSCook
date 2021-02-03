@@ -189,40 +189,40 @@ const CardRecipe = (): JSX.Element => {
                 </div>
               </div>
             </Grid>
-          
+
             <Grid item className={styles['cardBlockContent']}>
               <div>
                 <span onClick={() => clickLikeBookmark(info.data.id)} data-key={info.data.id} className={`${classes.bookmark} ${like}`}></span>
               </div>
-          
-              {info.data.vegan && ( 
+
+              {info.data.vegan && (
                 <span><Brightness1Icon style={{ fontSize: 15, color: '#14c4bb' }} /> vegan</span>
               )}
-              {info.data.veryHealthy && ( 
+              {info.data.veryHealthy && (
                 <span><Brightness1Icon style={{ fontSize: 15, color: '#3078B4', marginLeft: '15px' }} /> healthy</span>
               )}
-              
+
               <Typography gutterBottom variant="h5" component="h1">
                 {info.data.title}
               </Typography>
-              
+
               <div className={styles['cardAddInfo']}>
-                {info.data.vegetarian && ( 
-                  <span>Vegetarian</span> 
+                {info.data.vegetarian && (
+                  <span>Vegetarian</span>
                 )}
-                {info.data.glutenFree && ( 
-                  <span>Gluten Free</span> 
+                {info.data.glutenFree && (
+                  <span>Gluten Free</span>
                 )}
-                {info.data.dairyFree && ( 
-                  <span>Dairy Free</span> 
+                {info.data.dairyFree && (
+                  <span>Dairy Free</span>
                 )}
               </div>
-            
+
               <Tabs className={classes.panelTabs} value={value} onChange={handleChange} aria-label="description recipe">
                 <Tab label="Ingredients" {...a11yProps(0)} />
                 <Tab label="Steps" {...a11yProps(1)} />
               </Tabs>
-            
+
               <TabPanel value={value} index={0}>
                 <div className={styles['cardTabContent']}>
                   <ul>

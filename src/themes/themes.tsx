@@ -54,7 +54,7 @@ export const GlobalStyles = createGlobalStyle`
     color: ${props => props.theme.fontDarkColor};
   }
 
-  .theme-card, .MuiPaper-root {
+  .theme-card {
     background-color: ${props => props.theme.cardBgr};
   }
 

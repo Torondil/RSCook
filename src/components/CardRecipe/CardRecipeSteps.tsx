@@ -1,4 +1,4 @@
-import { 
+import {
   Stepper,
   Step,
   StepLabel,
@@ -67,7 +67,7 @@ const CardRecipeSteps = (props: { arraySteps: Array<string> }): JSX.Element => {
 
   return (
     <div>
-      <Stepper className={styles['stepperContainer']} activeStep={activeStep} orientation="vertical" >
+      <Stepper className="theme-card"  activeStep={activeStep} orientation="vertical" >
         {steps.map((label, index) => (
           <Step key={label} className={classesStep.step}>
             <StepLabel>{label}</StepLabel>
@@ -80,7 +80,7 @@ const CardRecipeSteps = (props: { arraySteps: Array<string> }): JSX.Element => {
                     onClick={handleBack}
                     className={`${classes.button} ${styles['backBtn']}`}
                   >
-                    <KeyboardArrowLeft/> Back 
+                    <KeyboardArrowLeft/> Back
                   </Button>
                   <Button
                     onClick={handleNext}
@@ -95,7 +95,7 @@ const CardRecipeSteps = (props: { arraySteps: Array<string> }): JSX.Element => {
         ))}
       </Stepper>
       {activeStep === steps.length && (
-        <Paper square elevation={0} className={styles['resetContainer']} >
+        <Paper square elevation={0} className={`${styles['resetContainer']} theme-card`} >
           <Typography component="h4">Bon appetit!</Typography>
           <div><IconCloche alt="Cloche" /> <img alt="Cutlery" src={IconCutlery} /></div>
           <Button onClick={handleReset} color="primary" className={`${classes.button} ${styles['resetBtn']}`}>
@@ -106,4 +106,4 @@ const CardRecipeSteps = (props: { arraySteps: Array<string> }): JSX.Element => {
     </div>
   );
 };
-export default CardRecipeSteps; 
+export default CardRecipeSteps;
