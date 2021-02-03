@@ -17,8 +17,7 @@ import AccessTime from '@material-ui/icons/AccessTime';
 import Bookmark from '@/assets/images/bookmark.png';
 import styles from './recipe.scss';
 import CardRecipeSteps from '@/components/CardRecipe/CardRecipeSteps';
-
-const API_KEY = 'be273a8565fb42c5a9a79ada8306fc43';
+import { FreeApiKey1 } from '@/constants/index';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -122,7 +121,7 @@ const CardRecipe = (): JSX.Element => {
   };
 
   useEffect(() => {
-    fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`)
+    fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${FreeApiKey1}`)
       .then(response => response.json())
       .then(response => {
         setData({ status: 'loaded', data: response });
@@ -155,7 +154,7 @@ const CardRecipe = (): JSX.Element => {
   return (
     <div className={`${styles['wrapCardRecipe']} bg-light`}>
       <div className={styles['cardRecipe']}>
-        
+
         {info.status === 'loading' && (
           <div style={{ paddingTop: '50px', paddingBottom: '50px' }}>
             <CircularProgress className={classes.loading} />
@@ -236,7 +235,7 @@ const CardRecipe = (): JSX.Element => {
 
               <TabPanel value={value} index={1}>
                 <CardContent className={styles['cardTabContent']}>
-                  {info.data.analyzedInstructions.forEach(({steps}) => 
+                  {info.data.analyzedInstructions.forEach(({ steps }) =>
                     steps.map(item => temp.push(item.step))
                   )}
                   <CardRecipeSteps arraySteps={temp} />

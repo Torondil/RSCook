@@ -11,5 +11,6 @@ declare module 'styled-components' {
     fontDarkColor: string;
     mainImg: string;
     cardBgr: string;
+    modalText: string;
   }
 }
