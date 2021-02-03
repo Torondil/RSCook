@@ -9,47 +9,41 @@ const Features = (): JSX.Element => (
     <Container>
       <Row>
         <Col>
-          <h3 className="text-warning">Feature title</h3>
+          <h3 className="text-warning">Convenient search</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam.
-            Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.
+            Convenient search for recipes for your favorite dishes by dish names.
           </p>
         </Col>
         <Col>
-          <h3 className="text-warning">Feature title</h3>
+          <h3 className="text-warning">Random slides</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam.
-            Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.
+            Animated presentation of random cooking recipes to grab your appetite!
           </p>
         </Col>
         <Col>
-          <h3 className="text-warning">Feature title</h3>
+          <h3 className="text-warning">Recipe categories</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam.
-            Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.
+            Possibility of choosing recipes for cooking dishes by category: main courses, desserts, breakfasts and others.
           </p>
         </Col>
       </Row>
       <Row>
         <Col>
-          <h3 className="text-warning">Feature title</h3>
+          <h3 className="text-warning">What's in your fridge</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam.
-            Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.
+            Smart search for recipes based on the ingredients you have in your fridge. A convenient solution for everyday use!
           </p>
         </Col>
         <Col>
-          <h3 className="text-warning">Feature title</h3>
+          <h3 className="text-warning">Your personal cookbook</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam.
-            Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.
+            You can add any cooking recipe you like to your profile, which will collect your personal book of favorite recipes!
           </p>
         </Col>
         <Col>
-          <h3 className="text-warning">Feature title</h3>
+          <h3 className="text-warning">Theme switcher</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam.
-            Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.
+            For your convenience, you can change the theme of the application, depending on the time of day.
           </p>
         </Col>
       </Row>

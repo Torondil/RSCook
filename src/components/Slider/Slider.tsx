@@ -59,7 +59,6 @@ export const Slider = (): JSX.Element => {
       <Swiper
         slidesPerView={1}
         navigation
-        autoHeight={true}
         spaceBetween={20}
         slidesPerGroup={1}
         loop
@@ -73,7 +72,7 @@ export const Slider = (): JSX.Element => {
           enabled: true,
         }}
         breakpoints={{
-          640: {
+          480: {
             slidesPerView: 2,
             spaceBetween: 20,
             slidesPerGroup: 1,
