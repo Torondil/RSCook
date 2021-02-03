@@ -95,6 +95,54 @@
 .cardBlockContent > div:first-child:hover {
   background-color: #f0f0f0;
 }
+/* * Stepper * */
+div.stepperContainer {
+  background-color: #fff !important;
+}
+[type=button].nextBtn {
+  background: #EC8B83;
+  border: 1px solid #EC8B83;
+  padding: 2px 0px 2px 7px;
+}
+[type=button].nextBtn:hover {
+  background-color: #fff;
+}
+[type=button].nextBtn:hover span {
+  color: #EC8B83 !important;
+}
+.nextBtn span {
+  color: #fff !important;
+}
+[type=button].backBtn {
+  color: #bebebe;
+  padding: 2px 7px 2px 0px;
+  border: 1px solid #bebebe;
+} 
+[type=button].backBtn span {
+    color: #bebebe !important;
+}
+div.resetContainer {
+  background-color: #fff !important;
+  padding: 24px;
+}
+[type=button].resetBtn {
+  background-color: #007bff;
+}
+[type=button].resetBtn:hover {
+  background-color: #fff;
+  border: 1px solid #007bff;
+}
+[type=button].resetBtn span {
+  color: #fff !important;
+}
+[type=button].resetBtn:hover span {
+  color: #007bff !important;
+}
+.resetContainer h4 {
+  font-size: 1.3rem;
+  padding: 0 0 15px;
+}
+
 
 @media only screen and (max-width: 960px) {
   .wrapCardRecipe .cardRecipe {
