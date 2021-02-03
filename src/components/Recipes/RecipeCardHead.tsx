@@ -150,7 +150,7 @@ const CardContentHead = (props: { title: string; idRecipe: number; image: string
         </DialogContent>
         <DialogActions>
           <Button
-            className={classes.addBtn}
+            className="outline-primary d-flex align-items-center theme-button"
             onClick={() => addToFavorit(props.idRecipe)}
             color="primary"
           >
