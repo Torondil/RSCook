@@ -20,9 +20,6 @@ const Footer = (): JSX.Element => (
       <Link className={styles['footer__menu']} to="/devteam">
         Development team
       </Link>
-      <Link className={styles['footer__menu']} to="/contacts">
-        Contact our team
-      </Link>
     </Nav>
     <div className={styles['footer__wrapper']}>
       <a className={styles['footer__school']} href="https://rs.school/js/">

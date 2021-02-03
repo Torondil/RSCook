@@ -7,9 +7,11 @@ import {
   DialogContent,
   DialogContentText,
   Slide,
-  Button,
+  // Button,
   CardMedia,
 } from '@material-ui/core';
+
+import { Button } from 'react-bootstrap';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { TransitionProps } from '@material-ui/core/transitions';
@@ -55,18 +57,6 @@ const CardStyle = makeStyles({
       textAlign: 'left',
       color: '#fff',
     },
-  },
-  addBtn: {
-    border: '1px solid #3078B4 !important',
-    color: '#3078B4',
-    textTransform: 'capitalize',
-    padding: '3px 8px',
-  },
-  cancelBtn: {
-    border: '1px solid #3078B4 !important',
-    color: '#3078B4',
-    textTransform: 'capitalize',
-    padding: '3px 8px',
   },
 });
 
@@ -127,20 +117,21 @@ const CardContentHead = (props: { idRecipe: number; image: string }): JSX.Elemen
       >
         <DialogTitle id="modal-dialog-title">{'Add a Favorite?'}</DialogTitle>
         <DialogContent>
-          <DialogContentText>
+          <DialogContentText className="theme-modalText">
             Add this recipe as a favorite. To access to favorites, visit the your Profile.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button
-            className={classes.addBtn}
+            className="outline-primary d-flex align-items-center theme-button"
             onClick={() => clickLikeBookmark(props.idRecipe)}
-            color="primary"
           >
-            <StarIcon style={{ color: '#3078B4', fontSize: 20 }} />
+            <StarIcon style={{ color: '#f8f9fa', fontSize: 20 }} />
             Add
           </Button>
-          <Button className={classes.cancelBtn} onClick={handleClose} color="primary">
+          <Button className="outline-primary d-flex align-items-center theme-button"
+            onClick={handleClose}
+          >
             Cancel
           </Button>
         </DialogActions>
