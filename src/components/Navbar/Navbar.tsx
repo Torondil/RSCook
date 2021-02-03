@@ -30,7 +30,6 @@ const NaviBar = (): JSX.Element => {
               <Icon />
             </Link>
           </Nav>
-          <SwitcherTheme />
         </Navbar.Collapse>
       </Navbar>
     </div>
