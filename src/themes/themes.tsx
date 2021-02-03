@@ -28,7 +28,7 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${props => props.theme.body};
   }
 
-  a, span, .bio-info, .developers-title, .rdGroup, .theme-title, .theme-card {
+  a, span, .bio-info, .developers-title, .rdGroup, .theme-title, .theme-card, .MuiTypography-root {
     color: ${props => props.theme.fontColor};
   }
 
@@ -54,7 +54,7 @@ export const GlobalStyles = createGlobalStyle`
     color: ${props => props.theme.fontDarkColor};
   }
 
-  .theme-card, .MuiPaper-root {
+  .theme-card {
     background-color: ${props => props.theme.cardBgr};
   }
 

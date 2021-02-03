@@ -32,12 +32,13 @@ const Filter = (): JSX.Element => {
 
   return (
     <div className='search_area'>
-      <form onSubmit={handleSubmit} className="form-inline">
+      <form onSubmit={handleSubmit} className="form-inline my-3 ml-3">
+        <p className="theme-title">Let's find your favorite dishes</p>
         <div className="form-group mx-sm-3 mb-2">
           <label htmlFor="query" className="sr-only">Search by name</label>
           <input id="query" type="text" className="form-control" placeholder='Input title' onChange={handleChangeQuery} />
         </div>
-        <button type="submit" className="btn btn-primary mb-2">Ok</button>
+        <button type="submit" className="btn btn-primary mb-2 theme-button">Ok</button>
       </form>
       <div className={styles['box']}>
         {result.status === "loaded" && (result.data.results.map(card => <Searchcard

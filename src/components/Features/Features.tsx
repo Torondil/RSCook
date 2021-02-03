@@ -41,9 +41,9 @@ const Features = (): JSX.Element => (
           </p>
         </Col>
         <Col>
-          <h3 className="text-warning">Theme switcher</h3>
+          <h3 className="text-warning">Step by step cooking</h3>
           <p>
-            For your convenience, you can change the theme of the application, depending on the time of day.
+            In the recipe card, you can start preparing your dish step by step. It is very convenient!
           </p>
         </Col>
       </Row>
