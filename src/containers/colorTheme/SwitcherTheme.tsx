@@ -4,7 +4,6 @@ import styles from '@/containers/colorTheme/SwitcherTheme.scss';
 
 import { connect } from 'react-redux';
 import { changeTheme } from '@/action/actionCreator';
-
 class SwitcherTheme extends Component {
 
   hendelClick = (): void => {
