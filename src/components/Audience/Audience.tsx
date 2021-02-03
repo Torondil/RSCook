@@ -13,30 +13,27 @@ const Audience = (): JSX.Element => (
       <Row>
         <img src={FirstLogo} className={styles['img-icon']} alt="FirstLogo" />
         <Col>
-          <h3 className="text-warning">Audience title</h3>
+          <h3 className="text-warning">Restaurants and cafes</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam.
-            Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.
+            The application can be convenient for use in restaurants and cafes, for convenient search and storage of cooking recipes.
           </p>
         </Col>
       </Row>
       <Row>
         <img src={SecondLogo} className={styles['img-icon']} alt="SecondLogo" />
         <Col>
-          <h3 className="text-warning">Audience title</h3>
+          <h3 className="text-warning">Everyone can be a cook</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam.
-            Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.
+            Every connoisseur of delicious food can use the book in the home kitchen so as not to keep in mind the recipes for your family's favorite dishes.
           </p>
         </Col>
       </Row>
       <Row>
         <img src={ThirdLogo} className={styles['img-icon']} alt="ThirdLogo" />
         <Col>
-          <h3 className="text-warning">Audience title</h3>
+          <h3 className="text-warning">Kids</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, modi laboriosam.
-            Consequatur, quos eum fuga consequuntur placeat at laboriosam voluptas.
+            The app can be used by your kids to show you what they like to eat!
           </p>
         </Col>
       </Row>

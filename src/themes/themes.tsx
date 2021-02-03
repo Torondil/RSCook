@@ -8,6 +8,7 @@ export const lightTheme = {
   fontDarkColor: '#ffc107 !important',
   mainImg: '#434852 !important',
   cardBgr: '#f8f9fa !important',
+  modalText: '#434852 !important',
 };
 
 export const darkTheme = {
@@ -18,6 +19,7 @@ export const darkTheme = {
   fontDarkColor: '#EC8B83 !important',
   mainImg: '#D0675F !important',
   cardBgr: '#6c757d !important',
+  modalText: '#f8f9fa !important',
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -54,6 +56,10 @@ export const GlobalStyles = createGlobalStyle`
 
   .theme-card, .MuiPaper-root {
     background-color: ${props => props.theme.cardBgr};
+  }
+
+  .theme-modalText {
+    color: ${props => props.theme.modalText};
   }
 
 `;
