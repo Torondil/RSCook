@@ -1,6 +1,6 @@
 const FilterUrl = 'https://api.spoonacular.com/recipes/complexSearch';
 
-const FreeApiKey1 = 'f959968ba54b4ba9bc92751f3f4269e8';
+const FreeApiKey1 = 'be273a8565fb42c5a9a79ada8306fc43';
 //3c7502ce108f4a94b059adc1b3a86117
 //f959968ba54b4ba9bc92751f3f4269e8
 

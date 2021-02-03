@@ -8,22 +8,11 @@ type Recipe = {
   title?: string;
 };
 
-// type STORAGE = {
-//   colorTheme: boolean;
-//   recipes: Recipe;
-// };
+const STORAGE: any = load({ namespace: 'recipes-list' });
 
-let STORAGE: any = load({ namespace: 'recipes-list' });
+const initialState: Recipe[] = (STORAGE && STORAGE.recipes) ? STORAGE.recipes : [];
 
-if (!STORAGE || !STORAGE.recipes || !STORAGE.recipes.length) {
-  STORAGE = {
-    recipes: [],
-  };
-}
-
-const qwerty: Array<Recipe> = STORAGE.recipes;
-
-const recipes = (state = STORAGE.recipes, { type, id, image, title }: Recipe): Array<Recipe> => {
+const recipes = (state = initialState, { type, id, image, title }: Recipe): Array<Recipe> => {
   switch (type) {
     case ADD_RECIPE:
       return [
