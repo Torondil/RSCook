@@ -1,7 +1,7 @@
 const FilterUrl = 'https://api.spoonacular.com/recipes/complexSearch';
 const FilterUrl2 = 'https://api.spoonacular.com/recipes/findByIngredients';
 
-const FreeApiKey1 = '6351083bfefe481ea3dd00009efd4c7b';
+const FreeApiKey1 = 'b9fccdd3419947cea4963e97b04e9e92';
 const FreeApiKey2 = 'be273a8565fb42c5a9a79ada8306fc43';
 
 const stateNumber = 10;
